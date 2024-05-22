@@ -13,8 +13,7 @@
       data-cfasync="false">class FVMLoader{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach(t=>window.addEventListener(t,e.userEventListener,e.eventOptions))}_removeUserInteractionListener(e){this.triggerEvents.forEach(t=>window.removeEventListener(t,e.userEventListener,e.eventOptions))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._runAllDelayedCSS(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("wpr-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=fvmdelay]").forEach(e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)})}_runAllDelayedCSS(){document.querySelectorAll("link[rel=fvmdelay]").forEach(e=>{e.setAttribute("rel","stylesheet")})}async _transformScript(e){return await this._requestAnimFrame(),new Promise(t=>{const n=document.createElement("script");let r;[...e.attributes].forEach(e=>{let t=e.nodeName;"type"!==t&&("data-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))}),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)})}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"wpr-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["wpr"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("DOMContentLoaded2",()=>t.bind(document)(n))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map(e=>"load"===e||0===e.indexOf("load.")?"wpr-jquery-load":e).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]})}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("DOMContentLoaded2")),await this._requestAnimFrame(),window.dispatchEvent(new Event("DOMContentLoaded2")),await this._requestAnimFrame(),document.dispatchEvent(new Event("wpr-readystatechange")),await this._requestAnimFrame(),document.wpronreadystatechange&&document.wpronreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("wpr-load")),await this._requestAnimFrame(),window.wpronload&&window.wpronload(),await this._requestAnimFrame(),this.allJQueries.forEach(e=>e(window).trigger("wpr-jquery-load")),window.dispatchEvent(new Event("wpr-pageshow")),await this._requestAnimFrame(),window.wpronpageshow&&window.wpronpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let a=e.get(n);void 0===a&&(a=n.nextSibling,e.set(n,a));const s=document.createDocumentFragment();r.setStart(s,0),s.appendChild(r.createContextualFragment(t)),i.insertBefore(s,a)}}async _requestAnimFrame(){return new Promise(e=>requestAnimationFrame(e))}static run(){const e=new FVMLoader(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}FVMLoader.run();</script><meta
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"><meta
-      name="theme-color" content="#bc8c96" /><title>The7: Wedding &#8211; Just
-      another The7 &#8211; Ultimate WordPress Theme Sites site</title><meta
+      name="theme-color" content="#bc8c96" /><title>Kim Anh & Văn Hân  &#8211;  Happy Wedding</title><meta
       name="robots" content="max-image-preview:large" /><link rel="alternate"
       type="application/rss+xml" title="The7: Wedding &raquo; Feed"
       href="https://the7.io/wedding/feed/" /><link rel="alternate"
@@ -51,8 +50,8 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap"
       rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="home.css">
-
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script id="the7-cloudflare-mobile-menu-fix">
         document.addEventListener("DOMContentLoaded", function() {
             document.body.querySelectorAll("img").forEach(function(el) {
@@ -235,17 +234,17 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                 href="#!/rsvp" data-level="1"><span class="menu-item-text"><span
                     class="menu-text">Lời chúc và sổ lưu
                     bút</span></span></a></li>
-                   
+
             <li
               class="menu-item menu-item-type-custom menu-item-object-custom menu-item-494 depth-0"><a
                 href="#!/registry" data-level="1"><span
                   class="menu-item-text"><span class="menu-text">Mừng
                     cưới</span></span></a></li>
-                      <li
+            <li
               class="menu-item menu-item-type-custom menu-item-object-custom menu-item-495 last depth-0"><a
                 href="#!/blog" data-level="1"><span class="menu-item-text"><span
                     class="menu-text">Album hình cưới</span></span></a></li>
-                    </ul>
+          </ul>
 
         </header>
       </div>
@@ -270,14 +269,14 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-493 depth-0"><a
               href="#!/rsvp" data-level="1"><span class="menu-item-text"><span
                   class="menu-text">Lời chúc và sổ lưu
-                  bút</span></span></a></li> 
+                  bút</span></span></a></li>
           <li
             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-494 depth-0"><a
               href="#!/registry" data-level="1"><span
                 class="menu-item-text"><span class="menu-text">Mừng
                   cưới</span></span></a></li>
 
-                  <li
+          <li
             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-495 last depth-0"><a
               href="#!/blog" data-level="1"><span class="menu-item-text"><span
                   class="menu-text">Album hình cưới</span></span></a></li>
@@ -334,9 +333,9 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               data-ultimate-target=".uvc-heading.ultimate-heading-41886645f2603225c .uvc-sub-heading "
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:34px;tablet:30px;tablet_portrait:24px;&quot;,&quot;line-height&quot;:&quot;desktop:44px;tablet:40px;tablet_portrait:34px;&quot;}"
                               style="font-weight:normal;color:#ffffff;"><span
-                                style="color: #bc8c96;">on 14 February,
-                                2025</span> &#8211; Chicago,
-                              Illinois</div></div></div></div></div></div><div
+                                style="color: #bc8c96;">on 07 July,
+                                2024</span> &#8211; Bà Rịa,
+                              Vũng Tàu</div></div></div></div></div></div><div
                     class="vc_row-full-width vc_clearfix"></div><div
                     class="upb_bg_img"
                     data-ultimate-bg="url(img/header1.jpg)"
@@ -390,8 +389,8 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                   fetchpriority="high" decoding="async"
                                   class="preload-me lazy-load aspect"
                                   src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20300%20300&#39;%2F%3E"
-                                  data-src="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w022-300x300.jpg"
-                                  data-srcset="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w022-300x300.jpg 300w, https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w022-600x600.jpg 600w"
+                                  data-src="img/codau.jpg"
+                                  data-srcset="img/codau.jpg 300w, img/codau.jpg 600w"
                                   loading="eager"
                                   sizes="(max-width: 300px) 100vw, 300px"
                                   width="300" height="300"
@@ -405,7 +404,8 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-20306645f26034bbf h5"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}"><h5
-                                style="font-family:&#039;Lora&#039;;--font-weight:theme;">Kim Anh</h5></div><div
+                                style="font-family:&#039;Lora&#039;;--font-weight:theme;">Kim
+                                Anh</h5></div><div
                               class="uvc-heading-spacer icon_only"
                               style="top"><div
                                 class="ult-just-icon-wrapper"><div
@@ -456,8 +456,8 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                   decoding="async"
                                   class="preload-me lazy-load aspect"
                                   src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20300%20300&#39;%2F%3E"
-                                  data-src="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w021-300x300.jpg"
-                                  data-srcset="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w021-300x300.jpg 300w, https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w021-600x600.jpg 600w"
+                                  data-src="img/chure.jpg"
+                                  data-srcset="img/chure.jpg 300w, img/chure.jpg 600w"
                                   loading="eager"
                                   sizes="(max-width: 300px) 100vw, 300px"
                                   width="300" height="300"
@@ -471,7 +471,8 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-24636645f26036801 h5"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}"><h5
-                                style="font-family:&#039;Lora&#039;;--font-weight:theme;">Văn Hân</h5></div><div
+                                style="font-family:&#039;Lora&#039;;--font-weight:theme;">Văn
+                                Hân</h5></div><div
                               class="uvc-heading-spacer icon_only"
                               style="top"><div
                                 class="ult-just-icon-wrapper"><div
@@ -498,8 +499,9 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               data-ultimate-target=".uvc-heading.ultimate-heading-48916645f26036c08 .uvc-sub-heading "
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:20px;&quot;,&quot;line-height&quot;:&quot;desktop:30px;&quot;}"
                               style="font-weight:normal;color:#bc8c96;">on
-                              February 14, 2025 — Chicago, <span
-                                lang="en">Illinois</span></div></div></div></div></div></div><div
+                              July 07, 2024 — Bà Rịa, <span
+                                lang="en">Vũng
+                                Tàu</span></div></div></div></div></div></div><div
                     class="vc_row-full-width vc_clearfix"></div><div
                     data-vc-full-width="true" data-vc-full-width-init="false"
                     data-vc-stretch-content="true"
@@ -521,27 +523,29 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-39576645f2603739e h3"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;mobile_landscape:40px;&quot;,&quot;line-height&quot;:&quot;mobile_landscape:40px;&quot;}"><h3
-                                style="font-weight:normal;font-style:normal;color:#bc8c96;">We
-                                will become a family in:</h3></div></div><style
+                                style="font-weight:normal;font-style:normal;color:#bc8c96;">Chúng
+                                tôi sẽ trở thành một gia đình
+                                sau:</h3></div></div><style
                             media="all">#count-down-wrap-5734 .ult_countdown-amount { font-weight:normal;  font-family : ;	color: #ffffff; } #count-down-wrap-5734 .ult_countdown-period{font-weight:normal;	color: #ffffff;	font-family: ;}</style><div
                             data-ultimate-target="#count-down-wrap-5734 .ult_countdown-period"
                             data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:16px;&quot;,&quot;line-height&quot;:&quot;desktop:16px;&quot;}"
-                            class="ult-responsive ult_countdown  vc_custom_1708334795936  ult-cd-no-border ult-cd-s2"><div
+                            class="ult-responsive ult_countdown  vc_custom_1708334795936  ult-cd-no-border ult-cd-s2">
+                            <div
                               id="count-down-wrap-5734"
                               class="ult-responsive ult_countdown-div ult_countdown-dateAndTime ult-wptz"
-                              data-labels="Years,Months,Weeks,Days,Hours,Minutes,Seconds"
-                              data-labels2="Year,Month,Week,Day,Hour,Minute,Second"
-                              data-terminal-date="2025/02/14 18:38:07"
+                              data-labels="Years,Tháng,Tuần,Ngày,Giờ,Phút,Seconds"
+                              data-labels2="Year,Tháng,Week,Day,Hour,Minute,Second"
+                              data-terminal-date="2024/07/17 18:38:07"
                               data-countformat="ODHM" data-time-zone="1"
-                              data-time-now="2024/05/16 12:47:44"
+                              data-time-now="2024/05/22 12:47:44"
                               data-tick-col="#ffffff"
                               data-ultimate-target="#count-down-wrap-5734 .ult_countdown-amount"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:80px;tablet:70px;tablet_portrait:60px;mobile_landscape:50px;&quot;,&quot;line-height&quot;:&quot;desktop:90px;tablet:80px;tablet_portrait:70px;mobile_landscape:60px;&quot;}"
                               data-tick-p-col="#ffffff"
                               data-tick-style="font-weight:normal;"
                               data-tick-p-style data-bg-color data-br-radius
-                              data-padd>2025/02/14
-                              18:38:07</div></div></div></div></div></div><div
+                              data-padd>2024/07/07
+                              11:00:00</div></div></div></div></div></div><div
                     class="vc_row-full-width vc_clearfix"></div><div
                     class="upb_bg_img"
                     data-ultimate-bg="url(https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w051.jpg)"
@@ -585,14 +589,22 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:24px;tablet_portrait:20px;&quot;,&quot;line-height&quot;:&quot;desktop:36px;tablet_portrait:32px;&quot;}"
                               style="font-weight:normal;color:#514f4e;margin-bottom:30px;">
                               "Chúng mình sinh ra từ 2 vùng quê khác nhau. Anh đã sinh sống và làm việc tại Sài Gòn suốt 11 năm, còn em cũng đã có 6 năm gắn bó với nơi này. Mặc dù vậy, phải đến tháng 12 năm 2024, chúng mình mới có cơ hội gặp gỡ lần đầu tiên. Chúng mình chả có 1 điểm chung nào, cũng không được ai giới thiệu. Chúng mình tự tìm hiểu nhau và anh tỏ tình với em vào lần gặp mặt thứ 3."
-                              Kim Anh &#8211; Văn Hân 
-                              </div></div>
+                              Kim Anh &#8211; Văn Hân
+                            </div></div>
                           <div class="wpb_text_column wpb_content_element">
                             <div class="wpb_wrapper">
-                              <p>- Ngày 15/12/2023 là ngày em đồng ý làm người yêu anh . Hôm ấy anh có lẻ là ngày đầu tiên anh đến đón em đi chơi đúng giờ , ăn mặc chỉnh tề , nước hoa thơm phức. Trong xe anh mở bài “ Đơn giản anh yêu em”cùng bó hoa hồng đỏ và sợ dây chuyền dung để tỏ tình với em . Bài hát đó đến nay vẫn là bài tủ của chúng mình mỗi khi nghe nhạc cùng nhau .  
+                              <p>- Ngày 15/12/2023 là ngày em đồng ý làm người
+                                yêu anh . Hôm ấy anh có lẻ là ngày đầu tiên anh
+                                đến đón em đi chơi đúng giờ , ăn mặc chỉnh tề ,
+                                nước hoa thơm phức. Trong xe anh mở bài “ Đơn
+                                giản anh yêu em”cùng bó hoa hồng đỏ và sợ dây
+                                chuyền dung để tỏ tình với em . Bài hát đó đến
+                                nay vẫn là bài tủ của chúng mình mỗi khi nghe
+                                nhạc cùng nhau .
                               </p>
-                              <p>- Ngày 11/04/2024 là ngày em đồng ý làm vợ anh </p>
-                           
+                              <p>- Ngày 11/04/2024 là ngày em đồng ý làm vợ anh
+                              </p>
+
                             </div>
                           </div>
                         </div></div></div><div
@@ -626,8 +638,8 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                   decoding="async"
                                   class="preload-me lazy-load aspect"
                                   src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20600%20800&#39;%2F%3E"
-                                  data-src="img/DUY_0787.jpg"
-                                  data-srcset="img/DUY_0787.jpg"
+                                  data-src="img/lovestory.jpg"
+                                  data-srcset="img/lovestory.jpg"
                                   loading="eager"
                                   sizes="(max-width: 600px) 100vw, 600px"
                                   width="600" height="800"
@@ -701,14 +713,18 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-87626645f2603c261 h4"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;tablet_portrait:24px;&quot;,&quot;line-height&quot;:&quot;tablet_portrait:36px;&quot;}"><h4
-                                style="--font-weight:theme;margin-bottom:20px;">Lê Thị Kim Anh</h4></div><div
+                                style="--font-weight:theme;margin-bottom:20px;">Lê
+                                Thị Kim Anh</h4></div><div
                               class="uvc-sub-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-87626645f2603c261 .uvc-sub-heading "
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:24px;tablet_portrait:20px;&quot;,&quot;line-height&quot;:&quot;desktop:36px;tablet_portrait:32px;&quot;}"
-                              style="font-weight:normal;color:#595857;margin-bottom:30px;">&#8220;Nàng dịu dàng, chu đáo&#8221;</div></div>
+                              style="font-weight:normal;color:#595857;margin-bottom:30px;">&#8220;Nàng
+                              dịu dàng, chu đáo&#8221;</div></div>
                           <div class="wpb_text_column wpb_content_element">
                             <div class="wpb_wrapper">
-                              <p>Kim Anh không chỉ xinh đẹp mà còn rất quan tâm đến mọi người, luôn mang lại cảm giác ấm áp và yêu thương cho gia đình và bạn bè.</p>
+                              <p>Kim Anh không chỉ xinh đẹp mà còn rất quan tâm
+                                đến mọi người, luôn mang lại cảm giác ấm áp và
+                                yêu thương cho gia đình và bạn bè.</p>
                             </div>
                           </div>
                           <style type="text/css"
@@ -1011,14 +1027,18 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-55876645f2603e0bb h4"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;tablet_portrait:24px;&quot;,&quot;line-height&quot;:&quot;tablet_portrait:36px;&quot;}"><h4
-                                style="--font-weight:theme;margin-bottom:20px;">Lê Văn Hân</h4></div><div
+                                style="--font-weight:theme;margin-bottom:20px;">Lê
+                                Văn Hân</h4></div><div
                               class="uvc-sub-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-55876645f2603e0bb .uvc-sub-heading "
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:24px;tablet_portrait:20px;&quot;,&quot;line-height&quot;:&quot;desktop:36px;tablet_portrait:32px;&quot;}"
-                              style="font-weight:normal;color:#595857;margin-bottom:30px;">&#8220;Chàng trai hài hước , thông minh&#8221;</div></div>
+                              style="font-weight:normal;color:#595857;margin-bottom:30px;">&#8220;Chàng
+                              trai hài hước , thông minh&#8221;</div></div>
                           <div class="wpb_text_column wpb_content_element">
                             <div class="wpb_wrapper">
-                              <p>Với sự dí dỏm và tinh thần lạc quan, anh luôn biết cách mang lại tiếng cười và niềm vui cho mọi người xung quanh !</p>
+                              <p>Với sự dí dỏm và tinh thần lạc quan, anh luôn
+                                biết cách mang lại tiếng cười và niềm vui cho
+                                mọi người xung quanh !</p>
                             </div>
                           </div>
                           <style type="text/css"
@@ -1279,7 +1299,8 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-25606645f2603ee5c h3"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;mobile_landscape:40px;&quot;,&quot;line-height&quot;:&quot;mobile_landscape:40px;&quot;}"><h3
-                                style="--font-weight:theme;color:#bc8c96;margin-bottom:30px;">Phù dâu</h3></div></div><style
+                                style="--font-weight:theme;color:#bc8c96;margin-bottom:30px;">Phù
+                                dâu</h3></div></div><style
                             type="text/css"
                             data-type="the7_shortcodes-inline-css"
                             media="all">.carousel-shortcode.carousel-shortcode-id-e124e4dd7a90a328a47993a349999751 .owl-nav a {
@@ -1439,8 +1460,7 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                         class="uvc-main-heading ult-responsive"
                                         data-ultimate-target=".uvc-heading.ultimate-heading-98496645f26040354 h5"
                                         data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:20px;&quot;,&quot;line-height&quot;:&quot;desktop:30px;&quot;}"><h5
-                                          style="--font-weight:theme;">Alexa
-                                          Greenwood</h5></div></div></div></div></div></div><div
+                                          style="--font-weight:theme;">Vân Anh</h5></div></div></div></div></div></div><div
                               class="vc_row wpb_row vc_inner vc_row-fluid"><div
                                 class="wpb_column vc_column_container vc_col-sm-12"><div
                                   class="vc_column-inner"><div
@@ -1490,8 +1510,7 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                         class="uvc-main-heading ult-responsive"
                                         data-ultimate-target=".uvc-heading.ultimate-heading-12126645f26041964 h5"
                                         data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:20px;&quot;,&quot;line-height&quot;:&quot;desktop:30px;&quot;}"><h5
-                                          style="--font-weight:theme;">Alexa
-                                          Greenwood</h5></div></div></div></div></div></div><div
+                                          style="--font-weight:theme;">Thùy Dương</h5></div></div></div></div></div></div><div
                               class="vc_row wpb_row vc_inner vc_row-fluid"><div
                                 class="wpb_column vc_column_container vc_col-sm-12"><div
                                   class="vc_column-inner"><div
@@ -1541,8 +1560,7 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                         class="uvc-main-heading ult-responsive"
                                         data-ultimate-target=".uvc-heading.ultimate-heading-65206645f26042e6d h5"
                                         data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:20px;&quot;,&quot;line-height&quot;:&quot;desktop:30px;&quot;}"><h5
-                                          style="--font-weight:theme;">Alexa
-                                          Greenwood</h5></div></div></div></div></div></div><div
+                                          style="--font-weight:theme;">Trâm Anh</h5></div></div></div></div></div></div><div
                               class="vc_row wpb_row vc_inner vc_row-fluid"><div
                                 class="wpb_column vc_column_container vc_col-sm-12"><div
                                   class="vc_column-inner"><div
@@ -1592,8 +1610,7 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                         class="uvc-main-heading ult-responsive"
                                         data-ultimate-target=".uvc-heading.ultimate-heading-8516645f260443cc h5"
                                         data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:20px;&quot;,&quot;line-height&quot;:&quot;desktop:30px;&quot;}"><h5
-                                          style="--font-weight:theme;">Alexa
-                                          Greenwood</h5></div></div></div></div></div></div></div></div></div></div><div
+                                          style="--font-weight:theme;">Thùy Trâm</h5></div></div></div></div></div></div></div></div></div></div><div
                       class="wpb_animate_when_almost_visible wpb_fadeInRight fadeInRight wpb_column vc_column_container vc_col-sm-12 vc_col-lg-6 vc_col-md-6 vc_col-has-fill"><div
                         class="vc_column-inner vc_custom_1570382078633"><div
                           class="wpb_wrapper"><div
@@ -1606,7 +1623,8 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-91376645f260448c7 h3"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;mobile_landscape:40px;&quot;,&quot;line-height&quot;:&quot;mobile_landscape:40px;&quot;}"><h3
-                                style="--font-weight:theme;color:#9aa2a9;margin-bottom:30px;">Phù rể</h3></div></div><style type="text/css"
+                                style="--font-weight:theme;color:#9aa2a9;margin-bottom:30px;">Phù
+                                rể</h3></div></div><style type="text/css"
                             data-type="the7_shortcodes-inline-css"
                             media="all">.carousel-shortcode.carousel-shortcode-id-3639f1c3b8bf8083a4f0da4ed6a570b7 .owl-nav a {
   width: 40px;
@@ -1765,8 +1783,7 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                         class="uvc-main-heading ult-responsive"
                                         data-ultimate-target=".uvc-heading.ultimate-heading-13886645f2604637d h5"
                                         data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:20px;&quot;,&quot;line-height&quot;:&quot;desktop:30px;&quot;}"><h5
-                                          style="--font-weight:theme;">Alexa
-                                          Greenwood</h5></div></div></div></div></div></div><div
+                                          style="--font-weight:theme;">Văn Thắng</h5></div></div></div></div></div></div><div
                               class="vc_row wpb_row vc_inner vc_row-fluid"><div
                                 class="wpb_column vc_column_container vc_col-sm-12"><div
                                   class="vc_column-inner"><div
@@ -1816,8 +1833,7 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                         class="uvc-main-heading ult-responsive"
                                         data-ultimate-target=".uvc-heading.ultimate-heading-49076645f26047f00 h5"
                                         data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:20px;&quot;,&quot;line-height&quot;:&quot;desktop:30px;&quot;}"><h5
-                                          style="--font-weight:theme;">James
-                                          Robins</h5></div></div></div></div></div></div><div
+                                          style="--font-weight:theme;">Văn Toàn</h5></div></div></div></div></div></div><div
                               class="vc_row wpb_row vc_inner vc_row-fluid"><div
                                 class="wpb_column vc_column_container vc_col-sm-12"><div
                                   class="vc_column-inner"><div
@@ -1867,8 +1883,7 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                         class="uvc-main-heading ult-responsive"
                                         data-ultimate-target=".uvc-heading.ultimate-heading-93016645f26049b1d h5"
                                         data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:20px;&quot;,&quot;line-height&quot;:&quot;desktop:30px;&quot;}"><h5
-                                          style="--font-weight:theme;">William
-                                          Anderson</h5></div></div></div></div></div></div><div
+                                          style="--font-weight:theme;">Tuấn Ngọc</h5></div></div></div></div></div></div><div
                               class="vc_row wpb_row vc_inner vc_row-fluid"><div
                                 class="wpb_column vc_column_container vc_col-sm-12"><div
                                   class="vc_column-inner"><div
@@ -1918,8 +1933,7 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                         class="uvc-main-heading ult-responsive"
                                         data-ultimate-target=".uvc-heading.ultimate-heading-52106645f2604c880 h5"
                                         data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:20px;&quot;,&quot;line-height&quot;:&quot;desktop:30px;&quot;}"><h5
-                                          style="--font-weight:theme;">Terry
-                                          Robins</h5></div></div></div></div></div></div></div></div></div></div></div><div
+                                          style="--font-weight:theme;">Đức Anh</h5></div></div></div></div></div></div></div></div></div></div></div><div
                     class="vc_row-full-width vc_clearfix"></div><div
                     data-vc-full-width="true" data-vc-full-width-init="false"
                     data-vc-stretch-content="true"
@@ -1946,7 +1960,7 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-sub-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-26476645f2604d84a .uvc-sub-heading "
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:80px;tablet:70px;tablet_portrait:60px;mobile_landscape:50px;&quot;,&quot;line-height&quot;:&quot;desktop:90px;tablet:80px;tablet_portrait:70px;mobile_landscape:60px;&quot;}"
-                              style="font-family:&#039;Lora&#039;;font-weight:normal;color:#ffffff;">14.02.2025</div></div></div></div></div></div><div
+                              style="font-family:&#039;Lora&#039;;font-weight:normal;color:#ffffff;">07.07.2024</div></div></div></div></div></div><div
                     class="vc_row-full-width vc_clearfix"></div><div
                     class="upb_bg_img"
                     data-ultimate-bg="url(https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w084.jpg)"
@@ -2031,14 +2045,16 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-34036645f2604fd7c h4"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;tablet_portrait:24px;&quot;,&quot;line-height&quot;:&quot;tablet_portrait:36px;&quot;}"><h4
-                                style="--font-weight:theme;margin-bottom:20px;">Lễ Cưới Nhà Gái</h4></div><div
+                                style="--font-weight:theme;margin-bottom:20px;">Lễ
+                                Cưới Nhà Gái</h4></div><div
                               class="uvc-sub-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-34036645f2604fd7c .uvc-sub-heading "
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}"
-                              style="font-weight:normal;">Hôn lễ cử hành tại: 
+                              style="font-weight:normal;">Hôn lễ cử hành tại:
                               <br />
                               Tư Gia</p>
-                            <p><span style="color: #bc8c96;">9:00 AM, 07/07/2024</span></div></div></div></div></div><div
+                            <p><span style="color: #bc8c96;">9:00 AM,
+                                07/07/2024</span></div></div></div></div></div><div
                       class="wpb_animate_when_almost_visible wpb_fadeInRight fadeInRight wpb_column vc_column_container vc_col-sm-6"><div
                         class="vc_column-inner vc_custom_1570465627755"><div
                           class="wpb_wrapper"><style type="text/css"
@@ -2085,14 +2101,19 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-3406645f260516fe h4"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;tablet_portrait:24px;&quot;,&quot;line-height&quot;:&quot;tablet_portrait:36px;&quot;}"><h4
-                                style="--font-weight:theme;margin-bottom:20px;">Tiệc Cưới Nhà Gái</h4></div><div
+                                style="--font-weight:theme;margin-bottom:20px;">Tiệc
+                                Cưới Nhà Gái</h4></div><div
                               class="uvc-sub-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-3406645f260516fe .uvc-sub-heading "
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}"
-                              style="font-weight:normal;">Nhà Hàng Hùng Nga<br/>334 Nguyễn Văn Linh, Phước Nguyên, Tp. Bà Rịa
-                             </p>
+                              style="font-weight:normal;">Nhà Hàng Hùng
+                              Nga<br />334 Nguyễn Văn Linh, Phước Nguyên, Tp. Bà
+                              Rịa
+                            </p>
                             <p><span
-                                style="color: #bc8c96;">11:00 A.M, 07/07/2024 (Nhầm 02/06/2024 Âm Lịch)</span></div></div></div></div></div><div
+                                style="color: #bc8c96;">11:00 A.M, 07/07/2024
+                                (Nhầm 02/06/2024 Âm
+                                Lịch)</span></div></div></div></div></div><div
                       class="wpb_animate_when_almost_visible wpb_fadeInLeft fadeInLeft wpb_column vc_column_container vc_col-sm-6"><div
                         class="vc_column-inner vc_custom_1570465635455"><div
                           class="wpb_wrapper"><style type="text/css"
@@ -2122,8 +2143,8 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                   decoding="async"
                                   class="preload-me lazy-load aspect"
                                   src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%201400%20900&#39;%2F%3E"
-                                  data-src="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w059.jpg"
-                                  data-srcset="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w059.jpg 1400w"
+                                  data-src="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w051.jpg"
+                                  data-srcset="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w051.jpg 1400w"
                                   loading="eager"
                                   sizes="(max-width: 1400px) 100vw, 1400px"
                                   width="1400" height="900"
@@ -2140,14 +2161,17 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               data-ultimate-target=".uvc-heading.ultimate-heading-1076645f260533b5 h4"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;tablet_portrait:24px;&quot;,&quot;line-height&quot;:&quot;tablet_portrait:36px;&quot;}">
                               <h4
-                              style="--font-weight:theme;margin-bottom:20px;font-family: Roboto Mono">Lễ Cưới Nhà Trai</h4></div><div
+                                style="--font-weight:theme;margin-bottom:20px;font-family: Roboto Mono">Lễ
+                                Cưới Nhà Trai</h4></div><div
                               class="uvc-sub-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-1076645f260533b5 .uvc-sub-heading "
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}"
-                              style="font-weight:normal;">Hôn lễ cử hành tại:<br />Tư Gia </p>
-                            <p><span style="color: #bc8c96;">9:00 AM, 17/07/2024</span>
+                              style="font-weight:normal;">Hôn lễ cử hành
+                              tại:<br />Tư Gia </p>
+                            <p><span style="color: #bc8c96;">9:00 AM,
+                                17/07/2024</span>
                             </div></div></div></div></div>
-                              <div
+                    <div
                       class="wpb_animate_when_almost_visible wpb_fadeInRight fadeInRight wpb_column vc_column_container vc_col-sm-6"><div
                         class="vc_column-inner vc_custom_1570465640656"><div
                           class="wpb_wrapper"><style type="text/css"
@@ -2177,8 +2201,8 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                   decoding="async"
                                   class="preload-me lazy-load aspect"
                                   src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%201400%20900&#39;%2F%3E"
-                                  data-src="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w037.jpg"
-                                  data-srcset="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w037.jpg 1400w"
+                                  data-src="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w083.jpg"
+                                  data-srcset="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w083.jpg 1400w"
                                   loading="eager"
                                   sizes="(max-width: 1400px) 100vw, 1400px"
                                   width="1400" height="900"
@@ -2194,14 +2218,16 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-14276645f26054ddb h4"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;tablet_portrait:24px;&quot;,&quot;line-height&quot;:&quot;tablet_portrait:36px;&quot;}"><h4
-                                style="--font-weight:theme;margin-bottom:20px;font-family: Roboto Mono">Tiệc Cưới Nhà Trai</h4></div><div
+                                style="--font-weight:theme;margin-bottom:20px;font-family: Roboto Mono">Tiệc
+                                Cưới Nhà Trai</h4></div><div
                               class="uvc-sub-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-14276645f26054ddb .uvc-sub-heading "
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}"
                               style="font-weight:normal;">
-                            Tư Gia <br>Nhà cậu 2</p>
-                            <p><span style="color: #bc8c96;">11:00 AM, 17/07/2024</span>
-                              </div></div></div></div></div></div><div
+                              Tư Gia <br>Nhà cậu 2</p>
+                            <p><span style="color: #bc8c96;">11:00 AM,
+                                17/07/2024</span>
+                            </div></div></div></div></div></div><div
                     data-vc-full-width="true" data-vc-full-width-init="false"
                     class="vc_row wpb_row vc_row-fluid vc_custom_1570381404982 vc_row-o-content-middle vc_row-flex"><div
                       class="wpb_animate_when_almost_visible wpb_fadeIn fadeIn wpb_column vc_column_container vc_col-sm-10 vc_col-lg-offset-2 vc_col-lg-8 vc_col-md-offset-2 vc_col-md-8 vc_col-sm-offset-1"><div
@@ -2221,14 +2247,20 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-75426645f26055985 h3"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;tablet_portrait:56px;mobile_landscape:40px;&quot;,&quot;line-height&quot;:&quot;tablet_portrait:50px;mobile_landscape:40px;&quot;}"><h3
-                                style="font-family:&#039;Alex Brush&#039;;font-weight:normal;font-style:normal;color:#ffffff;margin-bottom:10px;">Hãy đến chung vui cùng chúng tôi !</h3></div><div
+                                style="font-family:&#039;Alex Brush&#039;;font-weight:normal;font-style:normal;color:#ffffff;margin-bottom:10px;">Hãy
+                                đến chung vui cùng chúng tôi !</h3></div><div
                               class="uvc-sub-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-75426645f26055985 .uvc-sub-heading "
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:24px;tablet_portrait:20px;&quot;,&quot;line-height&quot;:&quot;desktop:36px;tablet_portrait:32px;&quot;}"
-                              style="font-weight:normal;color:#ffffff;">&#8220;Cảm ơn sự hiện diện của quý vị trong ngày lễ trọng đại của Gia đình. <br> Khoảnh khắc này sẽ được lưu lại mãi mãi cùng hạnh phúc của <br>chúng tôi !&#8221;<br />
+                              style="font-weight:normal;color:#ffffff;">&#8220;Cảm
+                              ơn sự hiện diện của quý vị trong ngày lễ trọng đại
+                              của Gia đình. <br> Khoảnh khắc này sẽ được lưu lại
+                              mãi mãi cùng hạnh phúc của <br>chúng tôi
+                              !&#8221;<br />
                               <span style="color: #bc8c96;">—</span><br />
                               <span style="color: #bc8c96;">Kim Anh &amp;
-                                Văn Hân</span></div></div></div></div></div></div><div
+                                Văn
+                                Hân</span></div></div></div></div></div></div><div
                     class="vc_row-full-width vc_clearfix"></div><div
                     class="upb_bg_img"
                     data-ultimate-bg="url(https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w077.jpg)"
@@ -2265,12 +2297,17 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-23296645f26056e5b h2"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;tablet_portrait:56px;mobile_landscape:40px;&quot;,&quot;line-height&quot;:&quot;tablet_portrait:50px;mobile_landscape:40px;&quot;}"><h2
-                                style="--font-weight:theme;color:#bc8c96;margin-bottom:20px;">Sổ lưu bút</h2></div><div
+                                style="--font-weight:theme;color:#bc8c96;margin-bottom:20px;">Sổ
+                                lưu bút</h2></div><div
                               class="uvc-sub-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-23296645f26056e5b .uvc-sub-heading "
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:24px;&quot;,&quot;line-height&quot;:&quot;desktop:36px;&quot;}"
-                              style="font-weight:normal;color:#514f4e;">Hãy để lại lời chúc tốt đẹp và kỷ niệm đáng nhớ dành cho cô dâu và chú rể tại đây!</p>
-                            <p><span style="color: #bc8c96;">Cảm ơn sự yêu thương và quan tâm của bạn</span></div></div></div></div></div><div
+                              style="font-weight:normal;color:#514f4e;">Hãy để
+                              lại lời chúc tốt đẹp và kỷ niệm đáng nhớ dành cho
+                              cô dâu và chú rể tại đây!</p>
+                            <p><span style="color: #bc8c96;">Cảm ơn sự yêu
+                                thương và quan tâm của bạn
+                                ❤️</span></div></div></div></div></div><div
                       class="wpb_animate_when_almost_visible wpb_fadeInRight fadeInRight wpb_column vc_column_container vc_col-sm-12 vc_col-lg-offset-0 vc_col-lg-6 vc_col-md-offset-0 vc_col-md-6 vc_col-sm-offset-0 vc_col-has-fill"><div
                         class="vc_column-inner vc_custom_1570468175356"><div
                           class="wpb_wrapper">
@@ -2363,16 +2400,18 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                             style="text-align:left"><div
                               class="uvc-heading-spacer no_spacer"
                               style="top"></div>
-                              <div
+                            <div
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-88406645f260582e5 h2"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;tablet_portrait:56px;mobile_landscape:40px;&quot;,&quot;line-height&quot;:&quot;tablet_portrait:50px;mobile_landscape:40px;&quot;}"><h2
                                 style="--font-weight:theme;color:#bc8c96;margin-bottom:20px;">Mừng
                                 cưới</h2>
-                                <p>Chúng tôi xin chân thành cảm ơn bạn đã gửi quà mừng cưới.<br>
-                                   Sự hiện diện và tấm lòng của bạn đã làm ngày trọng đại<br> của chúng tôi thêm ý nghĩa !</p>
-                                </div>
-                              </div></div></div></div><div
+                              <p>Chúng tôi xin chân thành cảm ơn bạn đã gửi quà
+                                mừng cưới.<br>
+                                Sự hiện diện và tấm lòng của bạn đã làm ngày
+                                trọng đại<br> của chúng tôi thêm ý nghĩa !</p>
+                            </div>
+                          </div></div></div></div><div
                       class="wpb_animate_when_almost_visible wpb_fadeInRight fadeInRight wpb_column vc_column_container vc_col-sm-8 vc_col-lg-offset-0 vc_col-lg-6 vc_col-md-offset-0 vc_col-md-6 vc_col-sm-offset-2 vc_col-xs-offset-2 vc_col-xs-8"><div
                         class="vc_column-inner vc_custom_1570466868770">
                         <div
@@ -2422,19 +2461,20 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                           data-dt-location="https://the7.io/wedding/home/log04/"
                                           style="--ratio: 520 / 200;"
                                           alt /></div></div></div>
-                                          <div>
-                                     <p>Ngân hàng: <strong>ACB</strong></p>
-                                     <p>Số tài khoản: <strong>19610207</strong></p>
-                                     <p>Tên tài khoản: <strong>LE THI KIM ANH</strong></p>
-                                     </div>
-                                          </div></div></div>
-                                          <div
+                                  <div>
+                                    <p>Ngân hàng: <strong>ACB</strong></p>
+                                    <p>Số tài khoản:
+                                      <strong>19610207</strong></p>
+                                    <p>Tên tài khoản: <strong>LE THI KIM
+                                        ANH</strong></p>
+                                  </div>
+                                </div></div></div>
+                            <div
                               class="wpb_column vc_column_container vc_col-sm-6">
                               <div
                                 class="vc_column-inner">
                                 <div>Mừng cưới đến chú rể</div>
 
-                               
                                 <div
                                   class="wpb_wrapper">
                                   <style type="text/css"
@@ -2459,7 +2499,7 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
   box-shadow: none;
 }</style>
 
-              <div
+                                  <div
                                     class="shortcode-single-image-wrap shortcode-single-image-af02664cca00c18f7a1b1174b293ea89 alignnone  vc_custom_1570441838042 enable-bg-rollover dt-icon-bg-off"><div
                                       class="shortcode-single-image"><div
                                         class="fancy-media-wrap  layzr-bg"
@@ -2474,29 +2514,39 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                                           data-dt-location="https://the7.io/wedding/home/log03/"
                                           style="--ratio: 520 / 200;"
                                           alt /></div>
-                                          </div></div></div>
-                                      <div>
-                                     <p>Ngân hàng: <strong>Techcombank</strong></p>
-                                     <p>Số tài khoản: <strong>19033762151010</strong></p>
-                                     <p>Tên tài khoản: <strong>LE VAN HAN</strong></p>
-                                     </div>
+                                    </div></div></div>
+                                <div>
+                                  <p>Ngân hàng: <strong>Techcombank</strong></p>
+                                  <p>Số tài khoản:
+                                    <strong>19033762151010</strong></p>
+                                  <p>Tên tài khoản: <strong>LE VAN
+                                      HAN</strong></p>
+                                </div>
 
-                                          </div></div>
-                                      
-                                     </div>
-                                     
-                                     </div>
-                                          
-                                     </div>
-                                    
-                                     </div></div>
-                                          
-                                          <div
-                    class="vc_row-full-width vc_clearfix"></div><div id="blog"
+                              </div></div>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div></div>
+
+                  <div
+                    class="vc_row-full-width vc_clearfix"></div>
+
+                  <div id="blog"
                     data-vc-full-width="true" data-vc-full-width-init="false"
-                    class="vc_row wpb_row vc_row-fluid vc_custom_1570460473403 vc_row-has-fill vc_row-o-content-middle vc_row-flex"><div
-                      class="wpb_animate_when_almost_visible wpb_fadeIn fadeIn wpb_column vc_column_container vc_col-sm-12 vc_col-lg-offset-0 vc_col-lg-12 vc_col-md-offset-0 vc_col-md-12 vc_col-sm-offset-0"><div
-                        class="vc_column-inner"><div class="wpb_wrapper"><div
+                    class="vc_row wpb_row vc_row-fluid vc_custom_1570460473403 vc_row-has-fill vc_row-o-content-middle vc_row-flex">
+
+                    <div
+                      class="wpb_animate_when_almost_visible wpb_fadeIn fadeIn wpb_column vc_column_container vc_col-sm-12 vc_col-lg-offset-0 vc_col-lg-12 vc_col-md-offset-0 vc_col-md-12 vc_col-sm-offset-0">
+
+                      <div
+                        class="vc_column-inner">
+                        <div class="wpb_wrapper">
+                          <div
                             id="ultimate-heading-95406645f26061120"
                             class="uvc-heading ult-adjust-bottom-margin ultimate-heading-95406645f26061120 uvc-6182"
                             data-hspacer="no_spacer" data-halign="center"
@@ -2506,8 +2556,7 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-95406645f26061120 h2"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;tablet_portrait:56px;mobile_landscape:40px;&quot;,&quot;line-height&quot;:&quot;tablet_portrait:50px;mobile_landscape:40px;&quot;}"><h2
-                                style="--font-weight:theme;color:#9aa2a9;margin-bottom:20px;">Our
-                                wedding blog</h2></div><div
+                                style="--font-weight:theme;color:#9aa2a9;margin-bottom:20px;">Album hình cưới</h2></div><div
                               class="uvc-sub-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-95406645f26061120 .uvc-sub-heading "
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:24px;&quot;,&quot;line-height&quot;:&quot;desktop:36px;&quot;}"
@@ -2669,12 +2718,7 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
     bottom: auto;
     right: auto;
   }
-  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .fancy-date a {
-    top: 10px;
-    right: 10px;
-    left: auto;
-    bottom: auto;
-  }
+  
   #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .post-entry-content {
     padding: 20px;
   }
@@ -2860,7 +2904,8 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
     transform: translateY(-50%);
     margin-top: 0px;
   }
-}</style><div
+}</style>
+                          <div
                             class="owl-carousel blog-carousel-shortcode dt-owl-carousel-call blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf gradient-overlap-layout-list content-bg-on scale-img dt-icon-bg-off meta-info-off vertical-fancy-style bullets-stroke reposition-arrows arrows-bg-off disable-arrows-hover-bg arrows-hover-bg-off"
                             data-scroll-mode="1" data-col-num="3"
                             data-wide-col-num="3" data-laptop-col="3"
@@ -2871,183 +2916,629 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                             data-speed="600" data-autoplay="false"
                             data-autoplay_speed="6000" data-arrows="true"
                             data-bullet="true" data-next-icon="icon-ar-021-r"
-                            data-prev-icon="icon-ar-021-l"><article
-                              class="post post-452 type-post status-publish format-standard has-post-thumbnail hentry category-uncategorised category-1"
-                              data-name="Elit duis tristique sollicitudin"
-                              data-date="2019-10-07T11:05:35+01:00">
-                              <div class="post-thumbnail-wrap">
-                                <div class="post-thumbnail">
-                                  <div class="fancy-date"><a title="11:05 am"
-                                      href="https://the7.io/wedding/2019/10/07/"><span
-                                        class="entry-month">Oct</span><span
-                                        class="entry-date updated">7</span><span
-                                        class="entry-year">2019</span></a></div>
-                                  <a
-                                    href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin/"
-                                    class="post-thumbnail-rollover layzr-bg"><img
-                                      decoding="async"
-                                      class="preload-me owl-lazy-load aspect"
-                                      src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20900%20900&#39;%2F%3E"
-                                      data-src="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w083-900x900.jpg"
-                                      data-srcset="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w083-900x900.jpg 900w"
-                                      loading="eager" style="--ratio: 900 / 900"
-                                      sizes="(max-width: 900px) 100vw, 900px"
-                                      alt title="w083" width="900"
-                                      height="900" /></a> </div>
-                              </div>
-                              <div class="post-entry-content">
-                                <h3 class="entry-title">
-                                  <a
-                                    href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin/"
-                                    title="Elit duis tristique sollicitudin"
-                                    rel="bookmark">Elit duis tristique
-                                    sollicitudin</a>
-                                </h3>
-                                <div class="entry-excerpt"><p>Elit duis
-                                    tristique sollicitudin nibh sit amet commodo
-                                    nulla facilisi viverra justo. Tempor commodo
-                                    ullamcorper a lacus vestibulum.&hellip;</p>
-                                </div>
-                                <a
-                                  href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin/"
-                                  class="post-details details-type-link"
-                                  aria-label="Read more about Elit duis tristique sollicitudin">View
-                                  full post<i class="dt-icon-the7-arrow-03"
-                                    aria-hidden="true"></i></a>
-                              </div></article><article
+                            data-prev-icon="icon-ar-021-l">
+
+                            <article
                               class="post post-450 type-post status-publish format-standard has-post-thumbnail hentry category-uncategorised category-1"
                               data-name="Elit duis tristique sollicitudin nibh"
                               data-date="2019-10-07T11:04:59+01:00">
                               <div class="post-thumbnail-wrap">
                                 <div class="post-thumbnail">
-                                  <div class="fancy-date"><a title="11:04 am"
-                                      href="https://the7.io/wedding/2019/10/07/"><span
-                                        class="entry-month">Oct</span><span
-                                        class="entry-date updated">7</span><span
-                                        class="entry-year">2019</span></a></div>
+
                                   <a
                                     href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin-nibh/"
                                     class="post-thumbnail-rollover layzr-bg"><img
                                       decoding="async"
                                       class="preload-me owl-lazy-load aspect"
                                       src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20900%20900&#39;%2F%3E"
-                                      data-src="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w042-900x900.jpg"
-                                      data-srcset="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w042-900x900.jpg 900w"
+                                      data-src="img/album/DUY_0811.jpg"
+                                      data-srcset="img/album/DUY_0811.jpg 900w"
                                       loading="eager" style="--ratio: 900 / 900"
                                       sizes="(max-width: 900px) 100vw, 900px"
                                       alt title="w042" width="900"
                                       height="900" /></a> </div>
                               </div>
-                              <div class="post-entry-content">
-                                <h3 class="entry-title">
-                                  <a
-                                    href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin-nibh/"
-                                    title="Elit duis tristique sollicitudin nibh"
-                                    rel="bookmark">Elit duis tristique
-                                    sollicitudin nibh</a>
-                                </h3>
-                                <div class="entry-excerpt"><p>Elit duis
-                                    tristique sollicitudin nibh sit amet commodo
-                                    nulla facilisi viverra justo. Tempor commodo
-                                    ullamcorper a lacus vestibulum.&hellip;</p>
-                                </div>
-                                <a
-                                  href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin-nibh/"
-                                  class="post-details details-type-link"
-                                  aria-label="Read more about Elit duis tristique sollicitudin nibh">View
-                                  full post<i class="dt-icon-the7-arrow-03"
-                                    aria-hidden="true"></i></a>
-                              </div></article><article
+                            </article>
+                            <article
                               class="post post-447 type-post status-publish format-standard has-post-thumbnail hentry category-uncategorised category-1"
                               data-name="Aenean commodo ligula eget dolor"
                               data-date="2019-10-07T11:04:18+01:00">
                               <div class="post-thumbnail-wrap">
                                 <div class="post-thumbnail">
-                                  <div class="fancy-date"><a title="11:04 am"
-                                      href="https://the7.io/wedding/2019/10/07/"><span
-                                        class="entry-month">Oct</span><span
-                                        class="entry-date updated">7</span><span
-                                        class="entry-year">2019</span></a></div>
+
                                   <a
                                     href="https://the7.io/wedding/2019/10/07/aenean-commodo-ligula-eget-dolor/"
                                     class="post-thumbnail-rollover layzr-bg"><img
                                       decoding="async"
                                       class="preload-me owl-lazy-load aspect"
                                       src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20900%20900&#39;%2F%3E"
-                                      data-src="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w078-900x900.jpg"
-                                      data-srcset="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w078-900x900.jpg 900w"
+                                      data-src="img/album/DUY_0775.jpg"
+                                      data-srcset="img/album/DUY_0775.jpg 900w"
                                       loading="eager" style="--ratio: 900 / 900"
                                       sizes="(max-width: 900px) 100vw, 900px"
                                       alt title="w078" width="900"
                                       height="900" /></a> </div>
                               </div>
-                              <div class="post-entry-content">
-                                <h3 class="entry-title">
+                            </article>
+                            <article
+                              class="post post-452 type-post status-publish format-standard has-post-thumbnail hentry category-uncategorised category-1"
+                              data-name="Elit duis tristique sollicitudin"
+                              data-date="2019-10-07T11:05:35+01:00">
+                              <div class="post-thumbnail-wrap">
+                                <div class="post-thumbnail">
+
                                   <a
-                                    href="https://the7.io/wedding/2019/10/07/aenean-commodo-ligula-eget-dolor/"
-                                    title="Aenean commodo ligula eget dolor"
-                                    rel="bookmark">Aenean commodo ligula eget
-                                    dolor</a>
-                                </h3>
-                                <div class="entry-excerpt"><p>Lorem ipsum dolor
-                                    sit amet, consectetuer adipiscing elit.
-                                    Aenean commodo ligula eget dolor. Aenean
-                                    massa. Cumsoci et! Lorem&hellip;</p>
-                                </div>
-                                <a
-                                  href="https://the7.io/wedding/2019/10/07/aenean-commodo-ligula-eget-dolor/"
-                                  class="post-details details-type-link"
-                                  aria-label="Read more about Aenean commodo ligula eget dolor">View
-                                  full post<i class="dt-icon-the7-arrow-03"
-                                    aria-hidden="true"></i></a>
-                              </div></article><article
+                                    href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin/"
+                                    class="post-thumbnail-rollover layzr-bg"><img
+                                      decoding="async"
+                                      class="preload-me owl-lazy-load aspect"
+                                      src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20900%20900&#39;%2F%3E"
+                                      data-src="img/lovestory.jpg"
+                                      data-srcset="img/lovestory.jpg 900w"
+                                      loading="eager" style="--ratio: 900 / 900"
+                                      sizes="(max-width: 900px) 100vw, 900px"
+                                      alt title="w083" width="900"
+                                      height="900" /></a> </div>
+                              </div>
+                            </article>
+
+                            <article
                               class="post post-445 type-post status-publish format-standard has-post-thumbnail hentry category-uncategorised category-1"
                               data-name="Elit duis tristique sollicitudin nibh sit amet."
                               data-date="2019-10-07T00:03:26+01:00">
                               <div class="post-thumbnail-wrap">
                                 <div class="post-thumbnail">
-                                  <div class="fancy-date"><a title="12:03 am"
-                                      href="https://the7.io/wedding/2019/10/07/"><span
-                                        class="entry-month">Oct</span><span
-                                        class="entry-date updated">7</span><span
-                                        class="entry-year">2019</span></a></div>
+
                                   <a
                                     href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin-nibh-sit-amet/"
                                     class="post-thumbnail-rollover layzr-bg"><img
                                       decoding="async"
                                       class="preload-me owl-lazy-load aspect"
                                       src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20900%20900&#39;%2F%3E"
-                                      data-src="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w051-900x900.jpg"
-                                      data-srcset="https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w051-900x900.jpg 900w"
+                                      data-src="img/album/DUY_0693.jpg"
+                                      data-srcset="img/album/DUY_0693.jpg 900w"
                                       loading="eager" style="--ratio: 900 / 900"
                                       sizes="(max-width: 900px) 100vw, 900px"
                                       alt title="w051" width="900"
                                       height="900" /></a> </div>
                               </div>
-                              <div class="post-entry-content">
-                                <h3 class="entry-title">
+                            </article>
+
+                            <article
+                              class="post post-445 type-post status-publish format-standard has-post-thumbnail hentry category-uncategorised category-1"
+                              data-name="Elit duis tristique sollicitudin nibh sit amet."
+                              data-date="2019-10-07T00:03:26+01:00">
+                              <div class="post-thumbnail-wrap">
+                                <div class="post-thumbnail">
+
                                   <a
                                     href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin-nibh-sit-amet/"
-                                    title="Elit duis tristique sollicitudin nibh sit amet."
-                                    rel="bookmark">Elit duis tristique
-                                    sollicitudin nibh sit amet.</a>
-                                </h3>
-                                <div class="entry-excerpt"><p>Elit duis
-                                    tristique sollicitudin nibh sit amet commodo
-                                    nulla facilisi viverra justo. Tempor commodo
-                                    ullamcorper a lacus vestibulum.&hellip;</p>
-                                </div>
-                                <a
-                                  href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin-nibh-sit-amet/"
-                                  class="post-details details-type-link"
-                                  aria-label="Read more about Elit duis tristique sollicitudin nibh sit amet.">View
-                                  full post<i class="dt-icon-the7-arrow-03"
-                                    aria-hidden="true"></i></a>
-                              </div></article></div></div></div></div></div><div
+                                    class="post-thumbnail-rollover layzr-bg"><img
+                                      decoding="async"
+                                      class="preload-me owl-lazy-load aspect"
+                                      src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20900%20900&#39;%2F%3E"
+                                      data-src="img/album/DUY_0701.jpg"
+                                      data-srcset="img/album/DUY_0701.jpg 900w"
+                                      loading="eager" style="--ratio: 900 / 900"
+                                      sizes="(max-width: 900px) 100vw, 900px"
+                                      alt title="w051" width="900"
+                                      height="900" /></a> </div>
+                              </div>
+                            </article>
+                            <article
+                              class="post post-445 type-post status-publish format-standard has-post-thumbnail hentry category-uncategorised category-1"
+                              data-name="Elit duis tristique sollicitudin nibh sit amet."
+                              data-date="2019-10-07T00:03:26+01:00">
+                              <div class="post-thumbnail-wrap">
+                                <div class="post-thumbnail">
+
+                                  <a
+                                    href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin-nibh-sit-amet/"
+                                    class="post-thumbnail-rollover layzr-bg"><img
+                                      decoding="async"
+                                      class="preload-me owl-lazy-load aspect"
+                                      src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20900%20900&#39;%2F%3E"
+                                      data-src="img/album/DUY_0794.jpg"
+                                      data-srcset="img/album/DUY_0794.jpg 900w"
+                                      loading="eager" style="--ratio: 900 / 900"
+                                      sizes="(max-width: 900px) 100vw, 900px"
+                                      alt title="w051" width="900"
+                                      height="900" /></a> </div>
+                              </div>
+                            </article>
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div
+                      style="margin-top: 105px;"
+                      class="wpb_animate_when_almost_visible wpb_fadeIn fadeIn wpb_column vc_column_container vc_col-sm-12 vc_col-lg-offset-0 vc_col-lg-12 vc_col-md-offset-0 vc_col-md-12 vc_col-sm-offset-0">
+
+                      <div
+                        class="vc_column-inner">
+                        <div class="wpb_wrapper">
+                          <style
+                            type="text/css"
+                            data-type="the7_shortcodes-inline-css"
+                            media="all">#page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.content-bg-on.gradient-overlap-layout-list .post-entry-content {
+  background: linear-gradient(to bottom,#ffffff,#ffffff) no-repeat 0px 150px;
+}
+#page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.content-bg-on.gradient-overlap-layout-list .post-entry-content:before {
+  background: #ffffff;
+  background: -moz-linear-gradient(top,rgba(255,255,255,0) 0%,rgba(255,255,255,0.9) 64%,#ffffff 83%,#ffffff 100%);
+  background: -webkit-linear-gradient(top,rgba(255,255,255,0) 0%,rgba(255,255,255,0.9) 64%,#ffffff 83%,#ffffff 100%);
+  background: linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0.9) 64%,#ffffff 83%,#ffffff 100%);
+}
+#page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.content-bg-on.gradient-overlap-layout-list .no-img .post-entry-content {
+  background: #ffffff;
+  padding: 30px 30px 30px 30px;
+}
+#page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.content-bg-on.gradient-overlap-layout-list .no-img .post-entry-content:before {
+  display: none;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .filter-bg-decoration .filter-categories a.act {
+  color: #fff;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf:not(.mode-masonry) article:first-of-type,
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf:not(.mode-masonry) article.visible.first:not(.product) {
+  margin-top: 0;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.dividers-on:not(.mode-masonry) article {
+  margin-top: 0;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.dividers-on:not(.mode-masonry) article:first-of-type,
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.dividers-on:not(.mode-masonry) article.visible.first:not(.product) {
+  margin-top: 0;
+  padding-top: 0;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .post-thumbnail-wrap {
+  padding: 0px 0px 0px 0px;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.enable-bg-rollover .post-thumbnail-rollover:after {
+  background: -webkit-linear-gradient();
+  background: linear-gradient();
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .gallery-zoom-ico {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  border-radius: 100px;
+  margin: -22px 0 0 -22px;
+  border-width: 0px;
+  color: #ffffff;
+  background: none;
+}
+.bottom-overlap-layout-list.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .gallery-zoom-ico {
+  margin-top: -72px;
+}
+.gradient-overlay-layout-list.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .gallery-zoom-ico,
+.content-rollover-layout-list.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .gallery-zoom-ico {
+  margin: 0 0 10px;
+}
+.content-align-center.gradient-overlay-layout-list.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .gallery-zoom-ico,
+.content-align-center.content-rollover-layout-list.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .gallery-zoom-ico {
+  margin: 0 auto 10px;
+}
+.dt-icon-bg-on.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .gallery-zoom-ico {
+  background: rgba(255,255,255,0.3);
+  box-shadow: none;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .gallery-zoom-ico > span,
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .gallery-zoom-ico:before {
+  font-size: 32px;
+  line-height: 44px;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .gallery-zoom-ico > span,
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .gallery-zoom-ico:before {
+  color: #ffffff;
+  background: none;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .entry-title,
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.owl-carousel .entry-title {
+  margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 34px;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .entry-meta {
+  margin-bottom: 15px;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .portfolio-categories {
+  margin-bottom: 15px;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .entry-excerpt {
+  margin-bottom: 5px;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf:not(.centered-layout-list) .post-entry-content {
+  padding: 50px 30px 30px 30px;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf:not(.centered-layout-list):not(.content-bg-on):not(.mode-list) .no-img .post-entry-content {
+  padding: 0;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.content-bg-on:not(.classic-layout-list):not(.centered-layout-list) .post-entry-content {
+  background: #ffffff;
+  box-shadow: none;
+}
+@media screen and (max-width: ) {
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf article {
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    margin-top: 20px;
+  }
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.dividers-on article {
+    border: none;
+  }
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.content-bg-on.centered-layout-list article {
+    padding: 0;
+  }
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.blog-shortcode.dividers-on article,
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.dividers-on.classic-layout-list article {
+    margin-top: 20px;
+    padding: 0;
+  }
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.blog-shortcode.dividers-on article:first-of-type,
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.dividers-on.classic-layout-list article:first-of-type {
+    padding: 0;
+  }
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .post-thumbnail-wrap,
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .post-entry-content {
+    width: 100%;
+    margin: 0;
+    top: 0;
+  }
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .post-thumbnail-wrap {
+    padding: 0;
+  }
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .post-entry-content:after {
+    display: none;
+  }
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .project-even .post-thumbnail-wrap,
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.centered-layout-list .post-thumbnail-wrap {
+    -ms-flex-order: 0;
+    order: 0;
+  }
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.centered-layout-list .post-entry-title-content {
+    -ms-flex-order: 1;
+    order: 1;
+    width: 100%;
+    padding: 20px 20px 0;
+  }
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.centered-layout-list .post-entry-content {
+    -ms-flex-order: 2;
+    order: 2;
+    padding-top: 0;
+  }
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .fancy-categories {
+    top: 10px;
+    left: 10px;
+    bottom: auto;
+    right: auto;
+  }
+  
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .post-entry-content {
+    padding: 20px;
+  }
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .entry-title {
+    margin: 3px 0 5px;
+    font-size: 20px;
+    line-height: 26px;
+  }
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .entry-meta {
+    margin: 5px 0 5px;
+  }
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .entry-excerpt {
+    margin: 15px 0 0;
+  }
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .post-details {
+    margin: 5px 0 10px;
+  }
+  #page .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .post-details.details-type-link {
+    margin-bottom: 2px;
+  }
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav a {
+  width: 52px;
+  height: 52px;
+  border-radius: 500px;
+}
+.dt-arrow-border-on.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav a:not(:hover):before {
+  border-width: 0px;
+}
+.dt-arrow-hover-border-on.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav a:hover:after {
+  border-width: 0px;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav a.owl-prev {
+  top: 50%;
+  transform: translateY(calc(-50% + 0px));
+  left: -60px;
+}
+@media all and (-ms-high-contrast: none) {
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav a.owl-prev {
+    transform: translateY(-50%);
+    margin-top: 0px;
+  }
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav a.owl-prev i {
+  padding: 0px 0px 0px 0px;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav a.owl-next {
+  top: 50%;
+  transform: translateY(calc(-50% + 0px));
+  right: -60px;
+}
+@media all and (-ms-high-contrast: none) {
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav a.owl-next {
+    transform: translateY(-50%);
+    margin-top: 0px;
+  }
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav a.owl-next i {
+  padding: 0px 0px 0px 0px;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav i {
+  font-size: 52px;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav a:not(:hover) i,
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav a:not(:hover) i:before {
+  color: rgba(154,162,169,0.5);
+  background: none;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav a:hover i,
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-nav a:hover i:before {
+  color: #9aa2a9;
+  background: none;
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dots {
+  top: calc(100% + 30px);
+  left: 50%;
+  transform: translateX(calc(-50% + 0px));
+}
+@media all and (-ms-high-contrast: none) {
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dots {
+    transform: translateX(-50%);
+    margin-left: 0px;
+  }
+}
+.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot {
+  width: 12px;
+  height: 12px;
+  margin: 0 7px;
+}
+.bullets-scale-up.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot:not(.active):not(:hover) span {
+  background: rgba(154,162,169,0.5);
+  box-shadow: none;
+}
+.bullets-scale-up.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot:not(.active):hover span,
+.bullets-scale-up.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot.active span {
+  background: rgba(154,162,169,0.5);
+  box-shadow: none;
+}
+.bullets-stroke.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot:not(.active):not(:hover) span {
+  background: rgba(154,162,169,0.5);
+  box-shadow: none;
+}
+.bullets-stroke.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot:not(.active):hover span {
+  background: rgba(154,162,169,0.5);
+  box-shadow: none;
+}
+.bullets-stroke.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot.active span {
+  box-shadow: 0 0 0 2px rgba(154,162,169,0.5);
+}
+.bullets-fill-in.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot:not(.active):not(:hover) span {
+  box-shadow: inset 0 0 0 2px rgba(154,162,169,0.5);
+}
+.bullets-fill-in.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot:not(.active):hover span {
+  box-shadow: inset 0 0 0 2px rgba(154,162,169,0.5);
+}
+.bullets-fill-in.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot.active span {
+  box-shadow: inset 0 0 0 20px rgba(154,162,169,0.5);
+}
+.bullets-small-dot-stroke.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot:not(.active):not(:hover) span {
+  background: rgba(154,162,169,0.5);
+  box-shadow: none;
+}
+.bullets-small-dot-stroke.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot:not(.active):hover span,
+.bullets-small-dot-stroke.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot.active span {
+  background: rgba(154,162,169,0.5);
+  box-shadow: none;
+}
+.bullets-small-dot-stroke.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot.active {
+  box-shadow: 0 0 0 2px rgba(154,162,169,0.5);
+}
+.bullets-ubax.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot span {
+  background: rgba(154,162,169,0.5);
+  box-shadow: none;
+}
+.bullets-ubax.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot.active span {
+  border-color: rgba(154,162,169,0.5);
+}
+.bullets-ubax.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot:not(.active):hover span {
+  background: rgba(154,162,169,0.5);
+  box-shadow: none;
+}
+.bullets-etefu.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot span {
+  background: rgba(154,162,169,0.5);
+  box-shadow: none;
+}
+.bullets-etefu.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot:not(.active):hover span {
+  background: rgba(154,162,169,0.5);
+  box-shadow: none;
+}
+.bullets-etefu.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot span:before {
+  background: rgba(154,162,169,0.5);
+  box-shadow: none;
+}
+.accent-gradient .bullets-etefu.blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf .owl-dot span:before {
+  background: rgba(154,162,169,0.5);
+  box-shadow: none;
+}
+@media screen and (max-width: 778px) {
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.hide-arrows .owl-nav a {
+    display: none;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.reposition-arrows .owl-nav .owl-prev {
+    top: 50%;
+    transform: translateY(calc(-50% + 0px));
+    left: -30px;
+  }
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.reposition-arrows .owl-nav .owl-next {
+    top: 50%;
+    transform: translateY(calc(-50% + 0px));
+    right: -30px;
+  }
+}
+@media screen and (max-width: 1300px) and all and (-ms-high-contrast: none) {
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.reposition-arrows .owl-nav .owl-prev {
+    transform: translateY(-50%);
+    margin-top: 0px;
+  }
+}
+@media screen and (max-width: 1300px) and all and (-ms-high-contrast: none) {
+  .blog-carousel-shortcode.blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf.reposition-arrows .owl-nav .owl-next {
+    transform: translateY(-50%);
+    margin-top: 0px;
+  }
+}</style>
+                          <div
+                            class="owl-carousel blog-carousel-shortcode dt-owl-carousel-call blog-carousel-shortcode-id-5f6ac071977a69b528c5131dd7f46fcf gradient-overlap-layout-list content-bg-on scale-img dt-icon-bg-off meta-info-off vertical-fancy-style bullets-stroke reposition-arrows arrows-bg-off disable-arrows-hover-bg arrows-hover-bg-off"
+                            data-scroll-mode="1" data-col-num="3"
+                            data-wide-col-num="3" data-laptop-col="3"
+                            data-h-tablet-columns-num="2"
+                            data-v-tablet-columns-num="1"
+                            data-phone-columns-num="1" data-auto-height="false"
+                            data-col-gap="30" data-stage-padding="0"
+                            data-speed="600" data-autoplay="false"
+                            data-autoplay_speed="6000" data-arrows="true"
+                            data-bullet="true" data-next-icon="icon-ar-021-r"
+                            data-prev-icon="icon-ar-021-l">
+
+                            <article
+                              class="post post-450 type-post status-publish format-standard has-post-thumbnail hentry category-uncategorised category-1"
+                              data-name="Elit duis tristique sollicitudin nibh"
+                              data-date="2019-10-07T11:04:59+01:00">
+                              <div class="post-thumbnail-wrap">
+                                <div class="post-thumbnail">
+
+                                  <a
+                                    href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin-nibh/"
+                                    class="post-thumbnail-rollover layzr-bg"><img
+                                      decoding="async"
+                                      class="preload-me owl-lazy-load aspect"
+                                      src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20900%20900&#39;%2F%3E"
+                                      data-src="img/album/DUY_0397.jpg"
+                                      data-srcset="img/album/DUY_0397.jpg 900w"
+                                      loading="eager" style="--ratio: 900 / 900"
+                                      sizes="(max-width: 900px) 100vw, 900px"
+                                      alt title="w042" width="900"
+                                      height="900" /></a> </div>
+                              </div>
+                            </article>
+                           
+                            <article
+                              class="post post-445 type-post status-publish format-standard has-post-thumbnail hentry category-uncategorised category-1"
+                              data-name="Elit duis tristique sollicitudin nibh sit amet."
+                              data-date="2019-10-07T00:03:26+01:00">
+                              <div class="post-thumbnail-wrap">
+                                <div class="post-thumbnail">
+
+                                  <a
+                                    href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin-nibh-sit-amet/"
+                                    class="post-thumbnail-rollover layzr-bg"><img
+                                      decoding="async"
+                                      class="preload-me owl-lazy-load aspect"
+                                      src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20900%20900&#39;%2F%3E"
+                                      data-src="img/album/DUY_0546.jpg"
+                                      data-srcset="img/album/DUY_0546.jpg 900w"
+                                      loading="eager" style="--ratio: 900 / 900"
+                                      sizes="(max-width: 900px) 100vw, 900px"
+                                      alt title="w051" width="900"
+                                      height="900" /></a> </div>
+                              </div>
+                            </article>
+                            <article
+                              class="post post-447 type-post status-publish format-standard has-post-thumbnail hentry category-uncategorised category-1"
+                              data-name="Aenean commodo ligula eget dolor"
+                              data-date="2019-10-07T11:04:18+01:00">
+                              <div class="post-thumbnail-wrap">
+                                <div class="post-thumbnail">
+
+                                  <a
+                                    href="https://the7.io/wedding/2019/10/07/aenean-commodo-ligula-eget-dolor/"
+                                    class="post-thumbnail-rollover layzr-bg"><img
+                                      decoding="async"
+                                      class="preload-me owl-lazy-load aspect"
+                                      src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20900%20900&#39;%2F%3E"
+                                      data-src="img/album/DUY_0523.jpg"
+                                      data-srcset="img/album/DUY_0523.jpg 900w"
+                                      loading="eager" style="--ratio: 900 / 900"
+                                      sizes="(max-width: 900px) 100vw, 900px"
+                                      alt title="w078" width="900"
+                                      height="900" /></a> </div>
+                              </div>
+                            </article>
+                            <article
+                              class="post post-452 type-post status-publish format-standard has-post-thumbnail hentry category-uncategorised category-1"
+                              data-name="Elit duis tristique sollicitudin"
+                              data-date="2019-10-07T11:05:35+01:00">
+                              <div class="post-thumbnail-wrap">
+                                <div class="post-thumbnail">
+
+                                  <a
+                                    href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin/"
+                                    class="post-thumbnail-rollover layzr-bg"><img
+                                      decoding="async"
+                                      class="preload-me owl-lazy-load aspect"
+                                      src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20900%20900&#39;%2F%3E"
+                                      data-src="img/album/DUY_0555.jpg"
+                                      data-srcset="img/album/DUY_0555.jpg 900w"
+                                      loading="eager" style="--ratio: 900 / 900"
+                                      sizes="(max-width: 900px) 100vw, 900px"
+                                      alt title="w083" width="900"
+                                      height="900" /></a> </div>
+                              </div>
+                            </article>
+
+                            <article
+                              class="post post-445 type-post status-publish format-standard has-post-thumbnail hentry category-uncategorised category-1"
+                              data-name="Elit duis tristique sollicitudin nibh sit amet."
+                              data-date="2019-10-07T00:03:26+01:00">
+                              <div class="post-thumbnail-wrap">
+                                <div class="post-thumbnail">
+
+                                  <a
+                                    href="https://the7.io/wedding/2019/10/07/elit-duis-tristique-sollicitudin-nibh-sit-amet/"
+                                    class="post-thumbnail-rollover layzr-bg"><img
+                                      decoding="async"
+                                      class="preload-me owl-lazy-load aspect"
+                                      src="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%20900%20900&#39;%2F%3E"
+                                      data-src="img/album/DUY_0436.jpg"
+                                      data-srcset="img/album/DUY_0436.jpg 900w"
+                                      loading="eager" style="--ratio: 900 / 900"
+                                      sizes="(max-width: 900px) 100vw, 900px"
+                                      alt title="w051" width="900"
+                                      height="900" /></a> </div>
+                              </div>
+                            </article>
+                            
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div
                     class="vc_row-full-width vc_clearfix"></div><div
                     data-vc-full-width="true" data-vc-full-width-init="false"
                     data-vc-stretch-content="true"
-                    class="vc_row wpb_row vc_row-fluid vc_custom_1570445402252 vc_row-no-padding vc_row-o-content-middle vc_row-flex"><div
+                    class="vc_row wpb_row vc_row-fluid vc_custom_1570445402252 vc_row-no-padding vc_row-o-content-middle vc_row-flex">
+                    <div
                       class="wpb_animate_when_almost_visible wpb_fadeIn fadeIn wpb_column vc_column_container vc_col-sm-12"><div
                         class="vc_column-inner"><div class="wpb_wrapper"><div
                             id="ultimate-heading-10306645f2606ceac"
@@ -3065,11 +3556,12 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
                               class="uvc-main-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-10306645f2606ceac h3"
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;tablet_portrait:56px;mobile_landscape:40px;&quot;,&quot;line-height&quot;:&quot;tablet_portrait:50px;mobile_landscape:40px;&quot;}"><h3
-                                style="font-family:&#039;Alex Brush&#039;;font-weight:normal;font-style:normal;color:#bc8c96;">Mong chờ được gặp bạn !</h3></div><div
+                                style="font-family:&#039;Alex Brush&#039;;font-weight:normal;font-style:normal;color:#bc8c96;">Mong
+                                chờ được gặp bạn !</h3></div><div
                               class="uvc-sub-heading ult-responsive"
                               data-ultimate-target=".uvc-heading.ultimate-heading-10306645f2606ceac .uvc-sub-heading "
                               data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:80px;tablet:70px;tablet_portrait:60px;mobile_landscape:50px;&quot;,&quot;line-height&quot;:&quot;desktop:90px;tablet:80px;tablet_portrait:70px;mobile_landscape:60px;&quot;}"
-                              style="font-family:&#039;Lora&#039;;font-weight:normal;color:#ffffff;">14.02.2025</div></div></div></div></div></div><div
+                              style="font-family:&#039;Lora&#039;;font-weight:normal;color:#ffffff;">07.07.2024</div></div></div></div></div></div><div
                     class="vc_row-full-width vc_clearfix"></div><div
                     class="upb_bg_img"
                     data-ultimate-bg="url(https://the7.io/wedding/wp-content/uploads/sites/56/2019/10/w042.jpg)"
@@ -3110,7 +3602,7 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
               <div class="wf-float-right">
                 <div class="bottom-text-block"><p>Kim Anh & Văn Hân
                     wedding<br />
-                    February 14, 2023 – Chicago, Illinois</p>
+                    July 07, 2024 – Bà Rịa, Vũng Tàu</p>
                 </div>
               </div>
             </div>
@@ -3127,26 +3619,17 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
         </svg><span class="screen-reader-text">Go to Top</span></a>
     </div>
     <a href="javascript:void(0);" class="annoying-button"
-      title="Open list of demos">
-      <span class="demos-number">60</span>
-      <span class="demos-caption">DEMOS</span>
+      title="Nhấn để xem sổ lưu bút">
+      <span class="demos-number">24</span>
+      <span style="font-size: 11px;" class="demos-caption">LƯU BÚT</span>
+    
+      
+
     </a>
     <div class="demo-panel">
-      <header class="filter-panel">
+      <header class="filter-panel" style="background-color: #ef90a5;">
         <div class="content-wrap">
-          <div class="categories-wrap">
-            <nav>
-              <a href="javascript:void(0);" class="act"
-                data-filter="demo-thumb">All</a>
-              <a href="javascript:void(0);"
-                data-filter="filter-elementor">Elementor</a><a
-                href="javascript:void(0);" data-filter="filter-multi-page">Multi
-                page</a><a href="javascript:void(0);"
-                data-filter="filter-one-page">One page</a><a
-                href="javascript:void(0);" data-filter="filter-shop">Shop</a><a
-                href="javascript:void(0);"
-                data-filter="filter-wpbakery">WPBakery</a> </nav>
-          </div>
+        <h4 style="margin: 0 auto;">Sổ lưu bút</h4>
           <a href="javascript:void(0)" class="close-panel">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
               viewbox="0 0 24 24" fill="none" stroke="currentColor"
@@ -3158,720 +3641,176 @@ var dtShare = {"shareButtonText":{"facebook":"Share on Facebook","twitter":"Shar
           </a>
         </div>
       </header>
-      <div class="content-panel the7-scrollbar">
-        <div class="content-wrap">
-          <a href="https://the7.io/elementor-main/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page filter-shop"
-            title="Elementor Main Demo">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Elementor Main Demo"
-                loading="lazy" decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2023/01/main-demo-loops-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2023/01/main-demo-loops-860x538.jpg 860w, https://the7.io/wp-content/uploads/2023/01/main-demo-loops-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Elementor Main Demo</span>
-          </a>
-          <a href="https://the7.io/blank/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page filter-shop"
-            title="Elementor Blank">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Elementor Blank" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2024/03/demo-blank-cont-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2024/03/demo-blank-cont-860x538.jpg 860w, https://the7.io/wp-content/uploads/2024/03/demo-blank-cont-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Elementor Blank</span>
-          </a>
-          <a href="https://the7.io/elementor-shop/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page filter-shop"
-            title="Online Shop Main Demo">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Online Shop Main Demo"
-                loading="lazy" decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/10/e-sh-demo-001-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/10/e-sh-demo-001-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/10/e-sh-demo-001-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Online Shop Main Demo</span>
-          </a>
-          <a href="https://the7.io/elementor-coffee/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page filter-shop"
-            title="Coffee Roasters">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Coffee Roasters" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2024/03/el-coffee-demo-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2024/03/el-coffee-demo-860x538.jpg 860w, https://the7.io/wp-content/uploads/2024/03/el-coffee-demo-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Coffee Roasters</span>
-          </a>
-          <a href="https://the7.io/elementor-product/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-one-page filter-shop"
-            title="Product">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Product" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2023/11/product-demo-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2023/11/product-demo-860x538.jpg 860w, https://the7.io/wp-content/uploads/2023/11/product-demo-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Product</span>
-          </a>
-          <a
-            href="https://the7.io/elementor-creative-dark/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page"
-            title="Creative Dark">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Creative Dark" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2023/01/creative-dark-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2023/01/creative-dark-860x538.jpg 860w, https://the7.io/wp-content/uploads/2023/01/creative-dark-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Creative Dark</span>
-          </a>
-          <a
-            href="https://the7.io/elementor-creative-light/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page"
-            title="Creative Light">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Creative Light" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2023/02/el-cr-light-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2023/02/el-cr-light-860x538.jpg 860w, https://the7.io/wp-content/uploads/2023/02/el-cr-light-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Creative Light</span>
-          </a>
-          <a href="https://the7.io/elementor-company/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page"
-            title="Company">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Company" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/08/elcomp1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/08/elcomp1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/08/elcomp1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Company</span>
-          </a>
-          <a href="https://the7.io/elementor-corporate/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page filter-shop"
-            title="Corporate">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Corporate" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/08/elcorp1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/08/elcorp1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/08/elcorp1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Corporate</span>
-          </a>
-          <a href="https://the7.io/business-advisors/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page filter-shop"
-            title="Business Advisors">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Business Advisors" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/07/banew1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/07/banew1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/07/banew1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Business Advisors</span>
-          </a>
-          <a href="https://the7.io/elementor-agency/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-one-page" title="Agency">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Agency" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/08/elagency1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/08/elagency1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/08/elagency1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Agency</span>
-          </a>
-          <a href="https://the7.io/winery/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page filter-shop"
-            title="Winery">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Winery" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/06/winery1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/06/winery1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/06/winery1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Winery</span>
-          </a>
-          <a href="https://the7.io/consulting/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page filter-shop"
-            title="Consulting">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Consulting" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/08/cons1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/08/cons1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/08/cons1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Consulting</span>
-          </a>
-          <a href="https://the7.io/brand-shop/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page filter-shop"
-            title="Brand Shop">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Brand Shop" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/10/br-sh-007-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/10/br-sh-007-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/10/br-sh-007-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Brand Shop</span>
-          </a>
-          <a href="https://the7.io/coach/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-one-page filter-shop"
-            title="Coach">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Coach" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/11/coach1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/11/coach1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/11/coach1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Coach</span>
-          </a>
-          <a href="https://the7.io/elementor-restaurant/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page"
-            title="Restaurant">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Restaurant" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/09/elrestg1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/09/elrestg1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/09/elrestg1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Restaurant</span>
-          </a>
-          <a href="https://the7.io/cbd/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-one-page filter-shop"
-            title="CBD Shop">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="CBD Shop" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/11/cbd1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/11/cbd1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/11/cbd1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">CBD Shop</span>
-          </a>
-          <a href="https://the7.io/elementor-business/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page"
-            title="Business">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Business" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/06/bus1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/06/bus1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/06/bus1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Business</span>
-          </a>
-          <a href="https://the7.io/accounting/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page"
-            title="Accounting">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Accounting" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/06/acc1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/06/acc1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/06/acc1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Accounting</span>
-          </a>
-          <a href="https://the7.io/logistics/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page"
-            title="Logistics">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Logistics" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/06/log1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/06/log1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/06/log1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Logistics</span>
-          </a>
-          <a
-            href="https://the7.io/elementor-minimal-creative-light/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page"
-            title="Minimal Creative Light">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Minimal Creative Light"
-                loading="lazy" decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/08/mincrlight1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/08/mincrlight1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/08/mincrlight1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Minimal Creative Light</span>
-          </a>
-          <a
-            href="https://the7.io/elementor-minimal-creative-dark/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page"
-            title="Minimal Creative Dark">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Minimal Creative Dark"
-                loading="lazy" decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/03/mincrdark1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/03/mincrdark1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/03/mincrdark1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Minimal Creative Dark</span>
-          </a>
-          <a href="https://the7.io/online-courses/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page filter-shop"
-            title="Online Courses">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Online Courses" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/09/ec1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/09/ec1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/09/ec1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Online Courses</span>
-          </a>
-          <a href="https://the7.io/fashion-store/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page filter-shop"
-            title="Fashion Store">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Fashion Store" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/03/fs001-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/03/fs001-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/03/fs001-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Fashion Store</span>
-          </a>
-          <a href="https://the7.io/fashion-blog/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor" title="Fashion Blog">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Fashion Blog" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/03/fblog1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/03/fblog1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/03/fblog1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Fashion Blog</span>
-          </a>
-          <a href="https://the7.io/elementor-starter/?utm_source=demo-panel"
-            class="demo-thumb filter-elementor filter-multi-page"
-            title="Elementor Starter">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Elementor Starter" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2022/03/elstart440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2022/03/elstart440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2022/03/elstart440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Elementor Starter</span>
-          </a>
-          <a href="https://the7.io/main/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-shop filter-wpbakery"
-            title="WPBakery Main Demo">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="WPBakery Main Demo" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2020/02/wpbmain1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2020/02/wpbmain1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2020/02/wpbmain1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">WPBakery Main Demo</span>
-          </a>
-          <a href="https://the7.io/wpbakery-starter/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery"
-            title="WPBakery Starter">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="WPBakery Starter" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2020/02/wpbstart1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2020/02/wpbstart1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2020/02/wpbstart1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">WPBakery Starter</span>
-          </a>
-          <a href="https://the7.io/yoga/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery" title="Yoga">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Yoga" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2020/02/wpbyoga1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2020/02/wpbyoga1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2020/02/wpbyoga1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Yoga</span>
-          </a>
-          <a href="https://the7.io/company/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery"
-            title="Company">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Company" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/03/wpbcompany1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/03/wpbcompany1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/03/wpbcompany1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Company</span>
-          </a>
-          <a href="https://the7.io/restaurant/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-one-page filter-wpbakery"
-            title="Restaurant">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Restaurant" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/03/wpbrest1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/03/wpbrest1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/03/wpbrest1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Restaurant</span>
-          </a>
-          <a href="https://the7.io/construction/?utm_source=demo-panel"
-            class="demo-thumb filter-wpbakery" title="Construction">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Construction" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2020/02/wpbconstr1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2020/02/wpbconstr1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2020/02/wpbconstr1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Construction</span>
-          </a>
-          <a href="https://the7.io/small-store/?utm_source=demo-panel"
-            class="demo-thumb filter-shop filter-wpbakery" title="Small Store">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Small Store" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2020/02/wpbsmallstore1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2020/02/wpbsmallstore1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2020/02/wpbsmallstore1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Small Store</span>
-          </a>
-          <a href="https://the7.io/clothing/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-shop filter-wpbakery"
-            title="Clothing Store">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Clothing Store" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2020/02/wpbclothing1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2020/02/wpbclothing1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2020/02/wpbclothing1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Clothing Store</span>
-          </a>
-          <a href="https://the7.io/agency/?utm_source=demo-panel"
-            class="demo-thumb filter-one-page filter-wpbakery"
-            title="WPBakery Agency">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="WPBakery Agency" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/03/wpbagency1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/03/wpbagency1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/03/wpbagency1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">WPBakery Agency</span>
-          </a>
-          <a href="https://the7.io/medical/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery"
-            title="Medical Clinic">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Medical Clinic" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/06/wpbmed1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/06/wpbmed1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/06/wpbmed1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Medical Clinic</span>
-          </a>
-          <a href="https://the7.io/corporate/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery"
-            title="WPBakery Corporate">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="WPBakery Corporate" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/05/wpbcorp1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/05/wpbcorp1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/05/wpbcorp1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">WPBakery Corporate</span>
-          </a>
-          <a href="https://the7.io/modern-business/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery"
-            title="Modern Business">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Modern Business" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/09/wpbmb1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/09/wpbmb1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/09/wpbmb1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Modern Business</span>
-          </a>
-          <a href="https://the7.io/weed/?utm_source=demo-panel"
-            class="demo-thumb filter-shop filter-wpbakery"
-            title="Medical Cannabis">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Medical Cannabis" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2019/11/wpbweed1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2019/11/wpbweed1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2019/11/wpbweed1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Medical Cannabis</span>
-          </a>
-          <a href="https://the7.io/business-one-page/?utm_source=demo-panel"
-            class="demo-thumb filter-one-page filter-wpbakery"
-            title="WPBakery Business One Page">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="WPBakery Business One Page"
-                loading="lazy" decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2017/06/wpbbusinessonepage1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2017/06/wpbbusinessonepage1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2017/06/wpbbusinessonepage1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">WPBakery Business One Page</span>
-          </a>
-          <a href="https://the7.io/psy/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery"
-            title="Psychology">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Psychology" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/06/wpbpsy1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/06/wpbpsy1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/06/wpbpsy1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Psychology</span>
-          </a>
-          <a href="https://the7.io/coffee/?utm_source=demo-panel"
-            class="demo-thumb filter-one-page filter-wpbakery" title="Coffee">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Coffee" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2019/12/wpbcoffee1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2019/12/wpbcoffee1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2019/12/wpbcoffee1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Coffee</span>
-          </a>
-          <a href="https://the7.io/beauty-studio/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery"
-            title="Beauty Studio">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Beauty Studio" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/03/wpbbeauty1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/03/wpbbeauty1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/03/wpbbeauty1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Beauty Studio</span>
-          </a>
-          <a href="https://the7.io/product/?utm_source=demo-panel"
-            class="demo-thumb filter-one-page filter-wpbakery" title="Product">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Product" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/08/wpbproduct1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/08/wpbproduct1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/08/wpbproduct1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Product</span>
-          </a>
-          <a href="https://the7.io/ecommerce-book/?utm_source=demo-panel"
-            class="demo-thumb filter-shop filter-wpbakery" title="Book Store">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Book Store" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2019/06/wpbbook1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2019/06/wpbbook1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2019/06/wpbbook1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Book Store</span>
-          </a>
-          <a href="https://the7.io/expedition/?utm_source=demo-panel"
-            class="demo-thumb filter-one-page filter-wpbakery"
-            title="Travel Agency">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Travel Agency" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/08/wpbtravel1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/08/wpbtravel1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/08/wpbtravel1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Travel Agency</span>
-          </a>
-          <a href="https://the7.io/one-page/?utm_source=demo-panel"
-            class="demo-thumb filter-one-page filter-wpbakery" title="One Page">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="One Page" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2017/08/wpbcreativeonepage1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2017/08/wpbcreativeonepage1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2017/08/wpbcreativeonepage1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">One Page</span>
-          </a>
-          <a href="https://the7.io/marketing-agency/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery"
-            title="Marketing Agency">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Marketing Agency" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/10/wpbmark1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/10/wpbmark1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/10/wpbmark1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Marketing Agency</span>
-          </a>
-          <a href="https://the7.io/nutritionist/?utm_source=demo-panel"
-            class="demo-thumb filter-one-page filter-wpbakery"
-            title="Nutritionist">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Nutritionist" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2017/06/wpbdiet1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2017/06/wpbdiet1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2017/06/wpbdiet1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Nutritionist</span>
-          </a>
-          <a href="https://the7.io/law/?utm_source=demo-panel"
-            class="demo-thumb filter-one-page filter-wpbakery" title="Law Firm">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Law Firm" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/08/wpblaw1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/08/wpblaw1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/08/wpblaw1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Law Firm</span>
-          </a>
-          <a href="https://the7.io/digital-agency/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery"
-            title="Digital Agency">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Digital Agency" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/08/wpbdigag1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/08/wpbdigag1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/08/wpbdigag1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Digital Agency</span>
-          </a>
-          <a href="https://the7.io/software-company/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery"
-            title="Software Company">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Software Company" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2019/12/wpbsoft1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2019/12/wpbsoft1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2019/12/wpbsoft1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Software Company</span>
-          </a>
-          <a href="https://the7.io/hotel/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery" title="Hotel">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Hotel" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2019/11/wpbhotel1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2019/11/wpbhotel1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2019/11/wpbhotel1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Hotel</span>
-          </a>
-          <a href="https://the7.io/church/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery" title="Church">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Church" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2018/11/wpbchurch1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2018/11/wpbchurch1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2018/11/wpbchurch1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Church</span>
-          </a>
-          <a href="https://the7.io/news/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery"
-            title="Blog &amp; News">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Blog &amp; News" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2017/08/wpbblog1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2017/08/wpbblog1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2017/08/wpbblog1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Blog &amp; News</span>
-          </a>
-          <a href="https://the7.io/dental/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-wpbakery"
-            title="Dental Clinic">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Dental Clinic" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2017/11/wpbdent1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2017/11/wpbdent1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2017/11/wpbdent1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Dental Clinic</span>
-          </a>
-          <a href="https://the7.io/shop/?utm_source=demo-panel"
-            class="demo-thumb filter-multi-page filter-shop filter-wpbakery"
-            title="Store">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Store" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2019/06/wpbshop1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2019/06/wpbshop1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2019/06/wpbshop1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Store</span>
-          </a>
-          <a href="https://the7.io/wedding/?utm_source=demo-panel"
-            class="demo-thumb filter-one-page filter-wpbakery" title="Wedding">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Wedding" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2017/02/wpbwedd1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2017/02/wpbwedd1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2017/02/wpbwedd1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Wedding</span>
-          </a>
-          <a href="https://the7.io/coming-soon-01/?utm_source=demo-panel"
-            class="demo-thumb filter-one-page filter-wpbakery"
-            title="Coming Soon Simple">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Coming Soon Simple" loading="lazy"
-                decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2017/01/wpbcsvert1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2017/01/wpbcsvert1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2017/01/wpbcsvert1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Coming Soon Simple</span>
-          </a>
-          <a href="https://the7.io/coming-soon-02/?utm_source=demo-panel"
-            class="demo-thumb filter-one-page filter-wpbakery"
-            title="Coming Soon Slideshow">
-            <span class="image-wrap">
-              <img class="load-on-click" alt="Coming Soon Slideshow"
-                loading="lazy" decoding="async"
-                data-srcset="https://the7.io/wp-content/uploads/2017/01/wpbcsslides1440-1160x725.jpg 1160w, https://the7.io/wp-content/uploads/2017/01/wpbcsslides1440-860x538.jpg 860w, https://the7.io/wp-content/uploads/2017/01/wpbcsslides1440-430x269.jpg 430w"
-                sizes="(max-width: 660px) calc(100vw - 60px), (max-width: 980px) calc(50vw - 60px), (max-width: 1450px) calc(33vw - 53px), calc(25vw - 50px)"
-                width="1160" height="725"> </span>
-            <span class="icons-wrap"></span>
-            <span class="caption-wrap">Coming Soon Slideshow</span>
-          </a>
+      <div class="content-panel the7-scrollbar" style="background-color: #ffffff;">
+    <ul class="list-group" style="margin: 0 auto;width: 80%;" >
+        <li class="list-group-item list-group-item-action">
+          <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-top: 4px; color:#ff9e9e;">person</span>
+          <h6 style="color:#0f0f0f;">Thùy Trinh</h6>
+      
+          <a style="color: #606060;
+                    font-size: 80%;
+                    margin-top: 2px;
+                    margin-left: 10px;
+                    cursor: pointer;"
+                    title="Thứ 3, 21 Tháng 3, 2024 lúc 20:06"
+                   
+
+                    >23 giờ</a>
+          </div>
+        <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-right: 4px;color:#ff9e9e">comment</span> 
+          <p style="color:#0f0f0f;"> Chúc anh chị mãi hạnh phúc, bình an và sớm có niềm vui có thiên thần bé nhỏ. Trăm năm hạnh phúc nhaaaa chị. With luvvvv. </p>
         </div>
+        </li>
+      <hr >
+      <li class="list-group-item list-group-item-action">
+          <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-top: 4px; color:#ff9e9e">person</span>
+          <h6 style="color:#0f0f0f;">Thùy Trinh</h6>
+      
+          <a style="color: #606060;
+                    font-size: 80%;
+                    margin-top: 2px;
+                    margin-left: 10px;
+                    cursor: pointer;"
+                    title="Thứ 3, 21 Tháng 3, 2024 lúc 20:06"
+                   
+
+                    >21 ngày</a>
+          </div>
+        <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-right: 4px;color:#ff9e9e">comment</span> 
+          <p style="color:#0f0f0f;"> Chúc anh chị mãi hạnh phúc, bình an và sớm có niềm vui có thiên thần bé nhỏ. Trăm năm hạnh phúc nhaaaa chị. With luvvvv. </p>
+        </div>
+        </li>
+        <hr >
+      <li class="list-group-item list-group-item-action">
+          <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-top: 4px; color:#0f0f0f;">person</span>
+          <h6 style="color:#0f0f0f;">Thùy Trinh</h6>
+      
+          <a style="color: #606060;
+                    font-size: 80%;
+                    margin-top: 2px;
+                    margin-left: 10px;
+                    cursor: pointer;"
+                    title="Thứ 3, 21 Tháng 3, 2024 lúc 20:06"
+                   
+
+                    >21 ngày</a>
+          </div>
+        <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-right: 4px;color:#0f0f0f">comment</span> 
+          <p style="color:#0f0f0f;"> Chúc anh chị mãi hạnh phúc, bình an và sớm có niềm vui có thiên thần bé nhỏ. Trăm năm hạnh phúc nhaaaa chị. With luvvvv. </p>
+        </div>
+        </li>
+        <hr >
+      <li class="list-group-item list-group-item-action">
+          <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-top: 4px; color:#0f0f0f;">person</span>
+          <h6 style="color:#0f0f0f;">Thùy Trinh</h6>
+      
+          <a style="color: #606060;
+                    font-size: 80%;
+                    margin-top: 2px;
+                    margin-left: 10px;
+                    cursor: pointer;"
+                    title="Thứ 3, 21 Tháng 3, 2024 lúc 20:06"
+                   
+
+                    >21 ngày</a>
+          </div>
+        <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-right: 4px;color:#0f0f0f">comment</span> 
+          <p style="color:#0f0f0f;"> Chúc anh chị mãi hạnh phúc, bình an và sớm có niềm vui có thiên thần bé nhỏ. Trăm năm hạnh phúc nhaaaa chị. With luvvvv. </p>
+        </div>
+        </li>
+        <hr >
+      <li class="list-group-item list-group-item-action">
+          <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-top: 4px; color:#0f0f0f;">person</span>
+          <h6 style="color:#0f0f0f;">Thùy Trinh</h6>
+      
+          <a style="color: #606060;
+                    font-size: 80%;
+                    margin-top: 2px;
+                    margin-left: 10px;
+                    cursor: pointer;"
+                    title="Thứ 3, 21 Tháng 3, 2024 lúc 20:06"
+                   
+
+                    >21 ngày</a>
+          </div>
+        <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-right: 4px;color:#0f0f0f">comment</span> 
+          <p style="color:#0f0f0f;"> Chúc anh chị mãi hạnh phúc, bình an và sớm có niềm vui có thiên thần bé nhỏ. Trăm năm hạnh phúc nhaaaa chị. With luvvvv. </p>
+        </div>
+        </li>
+        <hr >
+      <li class="list-group-item list-group-item-action">
+          <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-top: 4px; color:#0f0f0f;">person</span>
+          <h6 style="color:#0f0f0f;">Thùy Trinh</h6>
+      
+          <a style="color: #606060;
+                    font-size: 80%;
+                    margin-top: 2px;
+                    margin-left: 10px;
+                    cursor: pointer;"
+                    title="Thứ 3, 21 Tháng 3, 2024 lúc 20:06"
+                   
+
+                    >21 ngày</a>
+          </div>
+        <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-right: 4px;color:#0f0f0f">comment</span> 
+          <p style="color:#0f0f0f;"> Chúc anh chị mãi hạnh phúc, bình an và sớm có niềm vui có thiên thần bé nhỏ. Trăm năm hạnh phúc nhaaaa chị. With luvvvv. </p>
+        </div>
+        </li>
+        <hr >
+      <li class="list-group-item list-group-item-action">
+          <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-top: 4px; color:#0f0f0f;">person</span>
+          <h6 style="color:#0f0f0f;">Thùy Trinh</h6>
+      
+          <a style="color: #606060;
+                    font-size: 80%;
+                    margin-top: 2px;
+                    margin-left: 10px;
+                    cursor: pointer;"
+                    title="Thứ 3, 21 Tháng 3, 2024 lúc 20:06"
+                   
+
+                    >21 ngày</a>
+          </div>
+        <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-right: 4px;color:#0f0f0f">comment</span> 
+          <p style="color:#0f0f0f;"> Chúc anh chị mãi hạnh phúc, bình an và sớm có niềm vui có thiên thần bé nhỏ. Trăm năm hạnh phúc nhaaaa chị. With luvvvv. </p>
+        </div>
+        </li>
+        <hr >
+      <li class="list-group-item list-group-item-action">
+          <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-top: 4px; color:#0f0f0f;">person</span>
+          <h6 style="color:#0f0f0f;">Thùy Trinh</h6>
+      
+          <a style="color: #606060;
+                    font-size: 80%;
+                    margin-top: 2px;
+                    margin-left: 10px;
+                    cursor: pointer;"
+                    title="Thứ 3, 21 Tháng 3, 2024 lúc 20:06"
+                   
+
+                    >21 ngày</a>
+          </div>
+        <div style="display: flex;">
+          <span class="material-symbols-outlined" style="margin-right: 4px;color:#0f0f0f">comment</span> 
+          <p style="color:#0f0f0f;"> Chúc anh chị mãi hạnh phúc, bình an và sớm có niềm vui có thiên thần bé nhỏ. Trăm năm hạnh phúc nhaaaa chị. With luvvvv. </p>
+        </div>
+        </li>
+      </ul>
       </div>
     </div>
     <script type="text/html"
