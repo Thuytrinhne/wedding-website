@@ -1,6 +1,13 @@
 :root {
-    --font-family_title: "Roboto Mono";
+	--font-family_title: "Roboto Mono";
 }
 h4 {
-    font-family: var(--font-family_title);
+	font-family: var(--font-family_title);
+}
+p,
+div {
+	font-family: "Poppins";
+}
+.material-symbols-outlined {
+	color: #6d6868;
 }
