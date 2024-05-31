@@ -1,8 +1,23 @@
 :root {
 	--font-family_title: "Roboto Mono";
+	--Spring-Poppy: "#FCB2A9";
+	--IvoryCrepe: "#FFFFF8";
+	--EnglishPear: "#B0D5C0";
+	--Nimble: "#989CA0";
+	--font-family_text-medium: "Bromello";
+	--font-size-medium: 23px;
+}
+
+p {
+	font-family: var(--font-family_text-medium) !important;
+	font-size: 20px;
+}
+button {
+	font-family: var(--font-family_title) !important;
+	font-size: 20px !important;
 }
 h4 {
-	font-family: var(--font-family_title);
+	font-family: var(--font-family_title) !important;
 }
 p,
 div {
@@ -10,4 +25,170 @@ div {
 }
 .material-symbols-outlined {
 	color: #6d6868;
+}
+.pin-right {
+	display: inline-block;
+	transform: rotate(30deg);
+	position: absolute;
+	top: 16%;
+	right: 22%;
+}
+.position-relative {
+	position: relative;
+}
+
+.pin-left {
+	position: absolute;
+	top: 16%;
+	left: 60px;
+	display: inline-block;
+	transform: rotate(-15deg);
+}
+.pin-size {
+	font-size: 35px !important;
+}
+@media screen and (max-width: 768px) {
+	/* điều chỉnh max-width tùy theo kích thước của tablet */
+	.fancy-media-wrap {
+		display: none;
+	}
+
+	#list-container-general {
+		width: 100% !important;
+	}
+	.content-panel {
+		padding: 10px 20px !important;
+	}
+}
+.inner-li {
+	margin-right: 20px;
+}
+#list-container-general {
+	width: 70%;
+}
+input {
+	margin-bottom: 0 !important;
+}
+.menu-text {
+	font-family: var(--font-family_text-medium) !important;
+	font-size: var(--font-size-medium) !important;
+}
+.gift-wedding {
+	font-family: var(--font-family_text-medium) !important;
+	font-size: 24px;
+	color: #bc8c96;
+	padding-bottom: 24px;
+}
+input,
+textarea {
+	font-size: 20px !important;
+	font-family: var(--font-family_text-medium) !important;
+}
+
+.countdown-time {
+	font-size: 68px;
+	color: white;
+}
+.countdown-unit {
+	font-size: 20px;
+	color: #f0edec;
+	text-align: center;
+	margin-top: 7px;
+}
+
+#audioContainer {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+#playButton,
+#pauseButton {
+	display: block;
+	width: 100px;
+	height: 40px;
+	background-color: #4caf50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+#playButton:hover,
+#pauseButton:hover {
+	background-color: #ffb1c0;
+}
+
+#playButton:active,
+#pauseButton:active {
+	background-color: #ffb1c0;
+}
+
+.circle-shape {
+	color: white;
+}
+
+button#playButton {
+	width: 50px; /* Đặt chiều rộng của nút */
+	height: 50px; /* Đặt chiều cao của nút */
+	border: none; /* Xóa đường viền */
+	border-radius: 50%; /* Làm cho nút trở thành hình tròn */
+	background-color: #f57e93; /* Đặt màu nền là màu đỏ */
+}
+
+button#playButton:focus {
+	outline: none; /* Xóa viền khi nút được chọn */
+}
+.font-heading {
+	font: var(--the7-h2-font);
+}
+
+/* Responsive cho tablet */
+@media (max-width: 768px) {
+	.nameBig {
+		font-size: 70px;
+	}
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 480px) {
+	.nameBig {
+		font-size: 54px;
+	}
+
+	.mobile-break {
+		display: block;
+		content: "";
+		margin-top: 10px; /* Điều chỉnh khoảng cách giữa "&" và dòng mới */
+	}
+	.mobile-font {
+		font-size: 17px;
+	}
+
+	input,
+	textarea {
+		width: 90%;
+	}
+
+	.back-ground-see-you {
+		height: 85% !important;
+	}
+}
+.mobile-break {
+	display: none;
+}
+.list-container li {
+	font-size: 20px;
+	color: #514f4e;
+}
+.li-post {
+	font-size: 20px !important;
+	color: #2c2d2e !important;
+	margin-left: 12px;
+	text-align: justify;
+}
+.li-post-name {
+	color: #175fac !important;
 }
