@@ -192,3 +192,6 @@ button#playButton:focus {
 .li-post-name {
 	color: #175fac !important;
 }
+h5 {
+	font-family: var(--font-family_text-medium) !important;
+}
