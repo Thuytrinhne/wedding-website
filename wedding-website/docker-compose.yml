@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  wedding-website:
+    image: ${DOCKER_REGISTRY-}weddingwebsite
+    build:
+      context: .
+      dockerfile: wedding-website/Dockerfile
