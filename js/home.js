@@ -125,7 +125,21 @@ function showPostIntoPage(data) {
 			timeLink.style.marginTop = "2px";
 			timeLink.style.marginLeft = "10px";
 			timeLink.style.cursor = "pointer";
-			timeLink.title = "Thứ 3, 21 Tháng 3, 2024 lúc 20:06";
+
+			// Chuyển đổi chuỗi thời gian thành định dạng mong muốn
+			const createdAt = new Date(item.createdAt);
+			const options = {
+				weekday: "long",
+				day: "numeric",
+				month: "long",
+				year: "numeric",
+				hour: "numeric",
+				minute: "numeric",
+			};
+			const formattedTime = createdAt.toLocaleString("vi-VN", options);
+
+			timeLink.title = formattedTime;
+
 			timeLink.textContent = item.timeSincePost;
 
 			const secondDiv = document.createElement("div");

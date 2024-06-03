@@ -49,8 +49,8 @@ div {
 }
 @media screen and (max-width: 768px) {
 	/* điều chỉnh max-width tùy theo kích thước của tablet */
-	.fancy-media-wrap {
-		display: none;
+	.list-container-general-img {
+		display: none !important;
 	}
 
 	#list-container-general {
@@ -58,6 +58,12 @@ div {
 	}
 	.content-panel {
 		padding: 10px 20px !important;
+	}
+	#list-container {
+		max-height: 600px !important;
+	}
+	#container-message {
+		max-height: 700px !important;
 	}
 }
 .inner-li {
@@ -194,4 +200,16 @@ button#playButton:focus {
 }
 h5 {
 	font-family: var(--font-family_text-medium) !important;
+}
+
+.shape-round-img {
+	width: 200px !important;
+	height: 200px !important;
+	border-radius: 50% !important;
+	overflow: hidden !important;
+}
+.shape-round-img--center {
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
 }
