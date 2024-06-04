@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-	const apiUrl = "https://localhost:7188/api/posts";
+	const apiUrl = "https://wedding3-production.up.railway.app/posts?limit=1000";
 	getData(apiUrl);
 
 	// Search
@@ -46,7 +46,10 @@ function search(apiUrl, keyword) {
 	console.log("đã vào search function");
 	// Thêm query parameter vào URL
 	const urlWithParams = new URL(apiUrl);
-	urlWithParams.searchParams.append("keyword", keyword);
+	const trimmedKeyword = keyword.trim();
+
+	if (trimmedKeyword != "")
+		urlWithParams.searchParams.append("keyword", trimmedKeyword);
 
 	fetch(urlWithParams)
 		.then((response) => {
@@ -58,7 +61,9 @@ function search(apiUrl, keyword) {
 		.then((data) => {
 			console.log(data);
 			showPostIntoPage(data);
-			showTotalPost(data.totalItems);
+
+			if (data.totalRecords == null) showTotalPost(0);
+			else showTotalPost(data.totalRecords);
 		})
 		.catch((error) => {
 			console.error("Error:", error);
@@ -77,7 +82,8 @@ function getData(apiUrl) {
 		})
 		.then((data) => {
 			showPostIntoPage(data);
-			showTotalPost(data.totalItems);
+			if (data.totalRecords == null) showTotalPost(0);
+			else showTotalPost(data.totalRecords);
 		})
 		.catch((error) => {
 			console.error("Error:", error);
@@ -213,7 +219,7 @@ function addMessage() {
 		};
 		console.log(postData);
 
-		const apiUrl = "https://localhost:7188/api/posts";
+		const apiUrl = "https://wedding3-production.up.railway.app/posts";
 		postPost(apiUrl, postData);
 	}
 }
