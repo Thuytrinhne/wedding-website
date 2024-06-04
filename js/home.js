@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-	const apiUrl = "https://wedding3-production.up.railway.app/posts?limit=1000";
+	const apiUrl = "https://wedding3-2.onrender.com/posts?limit=1000";
 	getData(apiUrl);
 
 	// Search
@@ -219,7 +219,7 @@ function addMessage() {
 		};
 		console.log(postData);
 
-		const apiUrl = "https://wedding3-production.up.railway.app/posts";
+		const apiUrl = "https://wedding3-2.onrender.com/posts";
 		postPost(apiUrl, postData);
 	}
 }
