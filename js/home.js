@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+	// Ẩn phần tử "loading" sau 2 giây
+
+	document.getElementById("loading").style.display = "none";
+	document.getElementById("loading-HEART").style.display = "none";
+
 	const apiUrl = "https://wedding3-2.onrender.com/posts?limit=1000";
 	getData(apiUrl);
 
