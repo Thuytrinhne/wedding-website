@@ -133,7 +133,7 @@ function showPostIntoPage(data) {
 			timeLink.style.cursor = "pointer";
 
 			// Chuyển đổi chuỗi thời gian thành định dạng mong muốn
-			const createdAt = new Date(item.createdAt);
+			const createdAt = new Date(item.created_at);
 			const options = {
 				weekday: "long",
 				day: "numeric",
