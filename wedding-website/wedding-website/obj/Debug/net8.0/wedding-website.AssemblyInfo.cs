@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("wedding-website")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20f32dfbfa43700a22e4f04d0fd9a5c62931b471")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d55b34624f369b322f457b33f21272fa079d2c4")]
 [assembly: System.Reflection.AssemblyProductAttribute("wedding-website")]
 [assembly: System.Reflection.AssemblyTitleAttribute("wedding-website")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
