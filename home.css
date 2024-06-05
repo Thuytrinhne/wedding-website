@@ -193,10 +193,13 @@ button#playButton:focus {
 	font-size: 20px !important;
 	color: #2c2d2e !important;
 	margin-left: 12px;
-	text-align: justify;
 }
 .li-post-name {
 	color: #175fac !important;
+}
+
+.li-post-message {
+	text-align: justify;
 }
 h5 {
 	font-family: var(--font-family_text-medium) !important;

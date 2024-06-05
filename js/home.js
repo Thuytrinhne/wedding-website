@@ -162,7 +162,7 @@ function showPostIntoPage(data) {
 			commentSpan.textContent = "comment";
 
 			const contentParagraph = document.createElement("p");
-			contentParagraph.className = "li-post";
+			contentParagraph.className = "li-post li-post-message";
 
 			contentParagraph.style.color = "#0f0f0f";
 			contentParagraph.textContent = item.content;
