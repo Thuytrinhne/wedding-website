@@ -264,6 +264,8 @@ setInterval(updateCountdown, 1000);
 
 // play music
 var audio = document.getElementById("myAudio");
+audio.play(); // Gọi sự kiện click khi trang được tải hoàn thành
+
 var playButton = document.getElementById("playButton");
 
 playButton.addEventListener("click", function () {
